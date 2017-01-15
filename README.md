@@ -9,11 +9,12 @@ Forked from: [Lanyon](https://github.com/poole/lanyon) by [Mark Otto](https://tw
 
 ## Authors
 
+**Mohamed GHARSALLAH**
+- <https://github.com/medhoover>
+
 **Carlos BECKER**
 - <https://github.com/caarlos0>
 
-**Mohamed GHARSALLAH**
-- <https://github.com/medhoover>
 
 ## License
 
