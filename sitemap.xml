@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://goreleaser.com/introduction/</loc>
+    <lastmod>2018-10-20T17:55:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/project/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/quick-start/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/semver/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/cgo/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/environment/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/hooks/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/templates/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/build/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/customization/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/archive/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/checksum/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/sign/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/snapshots/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/nfpm/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/snapcraft/</loc>
+    <lastmod>2018-10-20T17:18:28-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/homebrew/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/scoop/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/release/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/s3/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/artifactory/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/bintray/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/put/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/ci/</loc>
+    <lastmod>2018-10-31T17:06:30+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/docker/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/deprecations/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/sponsors/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/contrib/</loc>
+    <lastmod>2018-10-31T00:02:22-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/tutorials/</loc>
+    <lastmod>2018-10-31T00:02:22-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/links/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/</loc>
+    <lastmod>2018-10-20T14:25:46-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

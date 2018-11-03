@@ -1,0 +1,267 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Quick Start &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.50" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&amp;s=140" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contrib/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>Quick Start</h1>
+		
+
+<p>In this example we will build, archive and release a Go project.</p>
+
+<p>Create a GitHub repository and add a single main package:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// main.go
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">package</span> main
+
+<span style="color:#8be9fd;font-style:italic">func</span> main() {
+  <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;Ba dum, tss!&#34;</span>)
+}</code></pre></div>
+<p>Run <code>goreleaser init</code> to create an example <code>.goreleaser.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser init
+
+   • Generating .goreleaser.yml file
+   • config created; please edit accordingly to your needs file=.goreleaser.yml</code></pre></div>
+<p>The generated config file will look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># This is an example goreleaser.yaml file with some sane defaults.</span>
+<span style="color:#6272a4"># Make sure to check the documentation at http://goreleaser.com</span>
+builds:
+- env:
+  - CGO_ENABLED=<span style="color:#bd93f9">0</span>
+archive:
+  replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    <span style="color:#bd93f9">386</span>: i386
+    amd64: x86_64
+checksum:
+  name_template: <span style="color:#f1fa8c">&#39;checksums.txt&#39;</span>
+snapshot:
+  name_template: <span style="color:#f1fa8c">&#34;{{ .Tag }}-next&#34;</span>
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - <span style="color:#f1fa8c">&#39;^docs:&#39;</span>
+    - <span style="color:#f1fa8c">&#39;^test:&#39;</span></code></pre></div>
+<p>GoReleaser will build the binaries for your app for Windows, Linux and macOS,
+both amd64 and i386 architectures. You can customize that by changing the
+<code>builds</code> section. Check the <a href="/build">documentation</a> for more information.</p>
+
+<p>After building the binaries, GoReleaser will create an archive for each OS/Arch
+pair into a separate file. You can customize several things by changing
+the <code>archive</code> section. Check the <a href="/archive">documentation</a> for more information.</p>
+
+<p>You&rsquo;ll need to export a <code>GITHUB_TOKEN</code> environment variable, which should
+contain a valid GitHub token with the <code>repo</code> scope.
+It will be used to deploy releases to your GitHub repository.
+You can create a token <a href="https://github.com/settings/tokens/new">here</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ export GITHUB_TOKEN=`YOUR_TOKEN`</code></pre></div>
+<p>GoReleaser will use the latest
+<a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">Git tag</a> of your repository.
+Create a tag and push it to GitHub:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ git tag -a v0.1.0 -m &#34;First release&#34;
+$ git push origin v0.1.0</code></pre></div>
+<blockquote>
+<p><strong>Attention</strong>: Check if your tag adheres to <a href="/semver">semantic versioning</a>.</p>
+</blockquote>
+
+<p>If you don&rsquo;t want to create a tag yet, you can also create a release
+based on the latest commit by using the <code>--snapshot</code> flag.</p>
+
+<p>Now you can run GoReleaser at the root of your repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser</code></pre></div>
+<p>That&rsquo;s all! Check your GitHub project&rsquo;s release page.
+The release should look like this:</p>
+
+<p><a href="https://github.com/goreleaser/goreleaser/releases">
+  <img width="100%"
+    src="https://cloud.githubusercontent.com/assets/245435/23342061/fbcbd506-fc31-11e6-9d2b-4c1b776dee9c.png">
+</a></p>
+
+<h2 id="dry-run">Dry run</h2>
+
+<p>If you want to test everything before doing a release &ldquo;for real&rdquo;, you can
+use the <code>--skip-publish</code> flag, which will only build and package things:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser release --skip-publish</code></pre></div>
+<p>You can check the other options by running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser --help</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser release --help</code></pre></div><blockquote><p>Last updated by Carlos Alexandro Becker on October 20, 2018.</p></blockquote></div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

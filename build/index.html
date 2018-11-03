@@ -1,0 +1,294 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Builds &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.50" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&amp;s=140" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contrib/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>Builds</h1>
+		
+
+<p>Builds can be customized in multiple ways.
+You can specify for which <code>GOOS</code>, <code>GOARCH</code> and <code>GOARM</code> binaries are built
+(goreleaser will generate a matrix of all combinations), and you can changed
+the name of the binary, flags, environment variables, hooks and etc.</p>
+
+<p>Here is a commented <code>builds</code> section with all fields specified:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+builds:
+  <span style="color:#6272a4"># You can have multiple builds defined as a yaml list</span>
+  -
+    <span style="color:#6272a4"># Path to main.go file or main package.</span>
+    <span style="color:#6272a4"># Default is `.`.</span>
+    main: ./cmd/main.go
+
+    <span style="color:#6272a4"># Name template for the binary final name.</span>
+    <span style="color:#6272a4"># Default is the name of the project directory.</span>
+    binary: program
+
+    <span style="color:#6272a4"># Set flags for custom build tags.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    flags:
+      - -tags=dev
+
+    <span style="color:#6272a4"># Custom asmflags templates.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    asmflags:
+      - -D mysymbol
+      - all=-trimpath={{.Env.GOPATH}}
+
+    <span style="color:#6272a4"># Custom gcflags templates.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+      - ./dontoptimizeme=-N
+
+    <span style="color:#6272a4"># Custom ldflags templates.</span>
+    <span style="color:#6272a4"># Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}`.</span>
+    ldflags:
+     - -s -w -X main.build={{.Version}}
+     - ./usemsan=-msan
+
+    <span style="color:#6272a4"># Custom environment variables to be set during the builds.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    env:
+      - CGO_ENABLED=<span style="color:#bd93f9">0</span>
+
+    <span style="color:#6272a4"># GOOS list to build for.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Defaults are darwin and linux.</span>
+    goos:
+      - freebsd
+      - windows
+
+    <span style="color:#6272a4"># GOARCH to build for.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Defaults are 386 and amd64.</span>
+    goarch:
+      - amd64
+      - arm
+      - arm64
+
+    <span style="color:#6272a4"># GOARM to build for when GOARCH is arm.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Default is only 6.</span>
+    goarm:
+      - <span style="color:#bd93f9">6</span>
+      - <span style="color:#bd93f9">7</span>
+
+    <span style="color:#6272a4"># List of combinations of GOOS + GOARCH + GOARM to ignore.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    ignore:
+      - goos: darwin
+        goarch: <span style="color:#bd93f9">386</span>
+      - goos: linux
+        goarch: arm
+        goarm: <span style="color:#bd93f9">7</span>
+
+    <span style="color:#6272a4"># Hooks can be used to customize the final binary,</span>
+    <span style="color:#6272a4"># for example, to run generators.</span>
+    <span style="color:#6272a4"># Default is both hooks empty.</span>
+    hooks:
+      pre: rice embed-go
+      post: ./script.sh</code></pre></div>
+<blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+
+<h2 id="passing-environment-variables-to-ldflags">Passing environment variables to ldflags</h2>
+
+<p>You can do that by using <code>{{ .Env.VARIABLE_NAME }}</code> in the template, for
+example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">builds:
+  - ldflags:
+   - -s -w -X <span style="color:#f1fa8c">&#34;main.goversion={{.Env.GOVERSION}}&#34;</span></code></pre></div>
+<p>Then you can run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">GOVERSION=$(go version) goreleaser</code></pre></div>
+<h2 id="go-modules">Go Modules</h2>
+
+<p>If you use Go 1.11 with go modules or vgo, when GoReleaser runs it may
+ try to download the dependencies. Since several builds run in parallel, it is
+ very likely to fail.</p>
+
+<p>You can solve this by running <code>go mod download</code> before calling <code>goreleaser</code> or
+ by adding a <a href="/hooks">hook</a> doing that on your <code>.goreleaser.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"> before:
+   hooks:
+   - go mod download
+ <span style="color:#6272a4"># rest of the file...</span></code></pre></div><blockquote><p>Last updated by Carlos Alexandro Becker on October 20, 2018.</p></blockquote></div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

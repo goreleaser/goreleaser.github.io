@@ -1,0 +1,249 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Introduction &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.50" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&amp;s=140" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contrib/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>Introduction</h1>
+		
+
+<p><a href="https://github.com/goreleaser/goreleaser">GoReleaser</a> is a release automation
+tool for Go projects, the goal is to simplify the build, release and
+publish steps while providing variant customization options for all steps.</p>
+
+<p>GoReleaser is built for CI tools; you only need to
+<a href="#ci_integration">download and execute it</a> in your build script.
+You can <a href="#Customization">customize</a> your release process by
+creating a <code>.goreleaser.yml</code> file.</p>
+
+<p>The idea started with a
+<a href="https://github.com/goreleaser/old-go-releaser">simple shell script</a>,
+but it quickly became more complex and I also wanted to publish binaries via
+Homebrew taps, which would have made the script even more hacky, so I let go of
+that and rewrote the whole thing in Go.</p>
+
+<h2 id="installing-goreleaser">Installing Goreleaser</h2>
+
+<p>There are three ways to get going install GoReleaser:</p>
+
+<h3 id="using-homebrew">Using homebrew</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">brew install goreleaser/tap/goreleaser</code></pre></div>
+<h3 id="using-snapcraft">Using snapcraft</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">snap install goreleaser</code></pre></div>
+<h3 id="using-scoop">Using Scoop</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">scoop bucket add goreleaser https://github.com/goreleaser/scoop-bucket.git
+scoop install goreleaser</code></pre></div>
+<blockquote>
+<p>Check the <a href="https://github.com/goreleaser/homebrew-tap">tap source</a> for
+more details.</p>
+</blockquote>
+
+<h3 id="using-docker">Using Docker</h3>
+
+<p>You can use Docker to do simple releases. Currently, the provided docker
+image does not provide support for snapcraft.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker run --rm --privileged \
+  -v $PWD:/go/src/github.com/user/repo \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -w /go/src/github.com/user/repo \
+  -e GITHUB_TOKEN \
+  -e DOCKER_USERNAME \
+  -e DOCKER_PASSWORD \
+  goreleaser/goreleaser release</code></pre></div>
+<p>Note that the image will almost always have the last stable Go version.</p>
+
+<p>If you need more things, you are encouraged to have your own image. You can
+always use GoReleaser&rsquo;s <a href="https://github.com/goreleaser/goreleaser/blob/master/Dockerfile">own Dockerfile</a> as an example though.</p>
+
+<h2 id="manually">Manually</h2>
+
+<p>Download your preferred flavor from the <a href="https://github.com/goreleaser/goreleaser/releases/latest">releases page</a> and install
+manually.</p>
+
+<h3 id="using-go-get">Using go get</h3>
+
+<p>Note: this method requires Go 1.10+.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ go get -d github.com/goreleaser/goreleaser
+$ cd $GOPATH/src/github.com/goreleaser/goreleaser
+$ dep ensure -vendor-only
+$ make setup build</code></pre></div>
+<p>It is recommended to also run <code>dep ensure</code> to make sure that the dependencies
+are in the correct versions.</p>
+<blockquote><p>Last updated by Carlos Alexandro Becker on October 20, 2018.</p></blockquote></div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>
