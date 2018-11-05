@@ -6,8 +6,8 @@
 		<title>GoReleaser</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		
+
+
 		<meta http-equiv="content-language" content="en-us" />
 		<meta name="generator" content="Hugo 0.50" />
 		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
@@ -21,9 +21,9 @@
 				<div class="Header">
   <a href="https://goreleaser.com/">
 	<div class="Title center">
-		
+
 			<img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&amp;s=140" height="140" />
-		
+
 		<span class="text">GoReleaser</span>
 		<span class="subtext"></span>
 	</div>
@@ -36,140 +36,140 @@
 		<div class="item">
 			<a href="https://goreleaser.com/">Home</a>
 		</div>
-		
-			
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/introduction/">Introduction</a>
 				</div>
-			
-		
-			
-		
-			
+
+
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/cgo/">CGO</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/environment/">Environment</a>
 				</div>
-			
-		
-			
-		
-			
-		
-			
-		
-			
+
+
+
+
+
+
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/customization/">Customization</a>
 				</div>
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
 				</div>
-			
-		
-			
-		
-			
+
+
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/contrib/">Contributing</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/tutorials/">Tutorials</a>
 				</div>
-			
-		
-			
+
+
+
 				<div class="item">
 					<a href="https://goreleaser.com/links/">Links</a>
 				</div>
-			
-		
-			
-		
-			
-		
-			
-		
+
+
+
+
+
+
+
+
 	</div>
 </div>
 
 					<div class="Content">
-						
-	
-	
-		
+
+
+
+
 			<div class="Page" id="Introduction">
 				<h1><a href="https://goreleaser.com/introduction/">Introduction</a></h1>
-				
+
 
 <p><a href="https://github.com/goreleaser/goreleaser">GoReleaser</a> is a release automation
 tool for Go projects, the goal is to simplify the build, release and
 publish steps while providing variant customization options for all steps.</p>
 
 <p>GoReleaser is built for CI tools; you only need to
-<a href="#ci_integration">download and execute it</a> in your build script.
-You can <a href="#Customization">customize</a> your release process by
+<a href="#installing-goreleaser">download and execute it</a> in your build script.
+You can <a href="https://goreleaser.com/customization/">customize</a> your release process by
 creating a <code>.goreleaser.yml</code> file.</p>
 
 <p>The idea started with a
@@ -227,14 +227,14 @@ $ make setup build</code></pre></div>
 are in the correct versions.</p>
 
 		</div>
-		
-	
-		
-	
-		
+
+
+
+
+
 			<div class="Page" id="Quick Start">
 				<h1><a href="https://goreleaser.com/quick-start/">Quick Start</a></h1>
-				
+
 
 <p>In this example we will build, archive and release a Go project.</p>
 
@@ -318,9 +318,9 @@ use the <code>--skip-publish</code> flag, which will only build and package thin
 <p>and</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ goreleaser release --help</code></pre></div>
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="Semantic Versioning">
 				<h1><a href="https://goreleaser.com/semver/">Semantic Versioning</a></h1>
 				<p>GoReleaser enforces semantic versioning and will error on non compliant tags.</p>
@@ -333,9 +333,9 @@ documentation to see how to use the tag or each part of the semantic version
 in name templates.</p>
 
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="CGO">
 				<h1><a href="https://goreleaser.com/cgo/">CGO</a></h1>
 				<p>Unfortunately, GoReleaser does not support CGO.</p>
@@ -346,12 +346,12 @@ in name templates.</p>
 <p>You can see the comments on the issue referenced for workarounds on it.</p>
 
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="Environment">
 				<h1><a href="https://goreleaser.com/environment/">Environment</a></h1>
-				
+
 
 <h2 id="github-token">GitHub Token</h2>
 
@@ -417,15 +417,15 @@ the snapshot, if you&rsquo;re using the <code>--snapshot</code> flag</li>
 <p>You can override this by changing the <code>ldflags</code> option in the <code>build</code> section.</p>
 
 		</div>
-		
-	
-		
-	
-		
-	
-		
-	
-		
+
+
+
+
+
+
+
+
+
 			<div class="Page" id="Customization">
 				<h1><a href="https://goreleaser.com/customization/">Customization</a></h1>
 				<p>GoReleaser provides multiple customizations via the <code>.goreleaser.yml</code> file.</p>
@@ -434,38 +434,38 @@ the snapshot, if you&rsquo;re using the <code>--snapshot</code> flag</li>
 The defaults are sensible and fit for most projects.</p>
 
 		</div>
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="Page" id="Continuous Integration">
 				<h1><a href="https://goreleaser.com/ci/">Continuous Integration</a></h1>
-				
+
 
 <p>GoReleaser was built from the very first commit with the idea of
 running it as part of the CI pipeline in mind.</p>
@@ -697,16 +697,16 @@ data:
 more detailed documentation.</p>
 
 		</div>
-		
-	
-		
-	
-		
-	
-		
+
+
+
+
+
+
+
 			<div class="Page" id="Sponsors">
 				<h1><a href="https://goreleaser.com/sponsors/">Sponsors</a></h1>
-				
+
 
 <p>Does your company use goreleaser? Help keep the project bug-free and feature rich by <a href="https://opencollective.com/goreleaser#sponsor">sponsoring the project</a>.</p>
 
@@ -752,9 +752,9 @@ more detailed documentation.</p>
 <a href="https://opencollective.com/goreleaser/backers/29/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/29/avatar"></a></p>
 
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="Contributing">
 				<h1><a href="https://goreleaser.com/contrib/">Contributing</a></h1>
 				<p>This page will eventually have information for those who want to contribute
@@ -764,9 +764,9 @@ to the project.</p>
 file on the root of our repository.</p>
 
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="Tutorials">
 				<h1><a href="https://goreleaser.com/tutorials/">Tutorials</a></h1>
 				<p>Tutorials made by the community.</p>
@@ -781,9 +781,9 @@ file on the root of our repository.</p>
 a Pull Request! Thanks!</p>
 
 		</div>
-		
-	
-		
+
+
+
 			<div class="Page" id="Links">
 				<h1><a href="https://goreleaser.com/links/">Links</a></h1>
 				<ul>
@@ -799,8 +799,8 @@ questions, etc. Join using <a href="https://invite.slack.golangbridge.org/">this
 By participating, you are expected to uphold this code.</p>
 
 		</div>
-		
-	
+
+
 
 						<div class="Footer">
 	<p>Made with ❤️ by GoReleaser contributors.</p>
@@ -815,7 +815,7 @@ if (!doNotTrack) {
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-106198408-1', 'auto');
-	
+
 	ga('send', 'pageview');
 }
 </script>
