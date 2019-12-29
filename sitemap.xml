@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://goreleaser.com/introduction/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/install/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/project/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/quick-start/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/semver/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/cgo/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/env/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/environment/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/hooks/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/templates/</loc>
+    <lastmod>2019-11-07T18:49:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/build/</loc>
+    <lastmod>2019-11-27T16:38:22-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/customization/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/archive/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/checksum/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/sign/</loc>
+    <lastmod>2019-12-26T23:14:40-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/snapshots/</loc>
+    <lastmod>2019-11-15T18:23:25-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/nfpm/</loc>
+    <lastmod>2019-12-22T15:06:34-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/snapcraft/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/homebrew/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/scoop/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/release/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/blob/</loc>
+    <lastmod>2019-12-27T14:18:41-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/s3/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/artifactory/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/bintray/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/upload/</loc>
+    <lastmod>2019-11-18T10:34:17-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/ci/</loc>
+    <lastmod>2019-11-01T08:25:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/docker/</loc>
+    <lastmod>2019-12-27T11:55:03-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/actions/</loc>
+    <lastmod>2019-12-24T14:52:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/deprecations/</loc>
+    <lastmod>2019-12-29T15:02:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/sponsors/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/contributing/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/tutorials/</loc>
+    <lastmod>2019-10-21T20:31:33+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/links/</loc>
+    <lastmod>2019-10-20T11:15:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/</loc>
+    <lastmod>2019-12-29T15:02:15-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goreleaser.com/tags/</loc>
+  </url>
+  
+</urlset>

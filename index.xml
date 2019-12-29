@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GoReleaser</title>
+    <link>https://goreleaser.com/</link>
+    <description>Recent content on GoReleaser</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Made with ❤️ by GoReleaser contributors.</copyright>
+    
+	<atom:link href="https://goreleaser.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://goreleaser.com/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/introduction/</guid>
+      <description>GoReleaser is a release automation tool for Go projects. The goal is to simplify the build, release and publish steps while providing variant customization options for all steps.
+GoReleaser is built for CI tools; you only need to download and execute it in your build script. Of course, you can also install it locally if you wish.
+You can also customize your release process through a .goreleaser.yml file.
+SeveralGitHub projects trust their release process to GoReleaser.</description>
+    </item>
+    
+    <item>
+      <title>Install</title>
+      <link>https://goreleaser.com/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/install/</guid>
+      <description>You can install the pre-compiled binary (in several different ways), use Docker or compile from source.
+Here are the steps for each of them:
+Install the pre-compiled binary homebrew tap (only on macOS for now):
+$ brew install goreleaser/tap/goreleaser homebrew (may not be the latest version):
+$ brew install goreleaser snapcraft:
+$ sudo snap install --classic goreleaser scoop:
+$ scoop bucket add goreleaser https://github.com/goreleaser/scoop-bucket.git $ scoop install goreleaser deb/rpm:
+Download the .</description>
+    </item>
+    
+    <item>
+      <title>Project Name</title>
+      <link>https://goreleaser.com/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/project/</guid>
+      <description>The project name is used in the name of the Brew formula, archives, etc. If none is given, it will be inferred from the name of the Git project.
+# .goreleaser.yml project_name: myproject </description>
+    </item>
+    
+    <item>
+      <title>Quick Start</title>
+      <link>https://goreleaser.com/quick-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/quick-start/</guid>
+      <description>In this example we will build, archive and release a sample Go project.
+Create a GitHub repository and add a single main package:
+// main.go package main func main() { println(&amp;#34;Ba dum, tss!&amp;#34;) } Run goreleaser init to create an example .goreleaser.yaml file:
+$ goreleaser init • Generating .goreleaser.yml file • config created; please edit accordingly to your needs file=.goreleaser.yml You can customize the generated .goreleaser.yml or leave it as-is, it&#39;s up to you.</description>
+    </item>
+    
+    <item>
+      <title>Semantic Versioning</title>
+      <link>https://goreleaser.com/semver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/semver/</guid>
+      <description>GoReleaser enforces semantic versioning and will error on non compliant tags.
+Your tag should be a valid semantic version. If it is not, GoReleaser will error.
+The v prefix is not mandatory. You can check the templating documentation to see how to use the tag or each part of the semantic version in name templates.</description>
+    </item>
+    
+    <item>
+      <title>CGO</title>
+      <link>https://goreleaser.com/cgo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/cgo/</guid>
+      <description>Unfortunately, GoReleaser does not support CGO.
+You can see the discussion about this in this issue.
+You can see the comments on the issue referenced for workarounds on it.</description>
+    </item>
+    
+    <item>
+      <title>Environment Variables</title>
+      <link>https://goreleaser.com/env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/env/</guid>
+      <description>Global environment variables to be passed down to all hooks and builds.
+This is useful for GO111MODULE, for example. You can have your .goreleaser.yaml file like the following:
+# .goreleaser.yml env: - GO111MODULE=on before: hooks: - go mod tidy builds: - binary: program This way, both go mod tidy and the underlying go build will have GO111MODULE set to on.</description>
+    </item>
+    
+    <item>
+      <title>Environment</title>
+      <link>https://goreleaser.com/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/environment/</guid>
+      <description>API Tokens GoReleaser requires either a GitHub API token with the repo scope selected to deploy the artifacts to GitHub or a GitLab API token with api scope or a Gitea API token. You can create one here for GitHub or here for GitLab or in Settings | Applications | Generate New Token page of your Gitea instance.
+This token should be added to the environment variables as GITHUB_TOKEN or GITLAB_TOKEN or GITEA_TOKEN respecively.</description>
+    </item>
+    
+    <item>
+      <title>Global Hooks</title>
+      <link>https://goreleaser.com/hooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/hooks/</guid>
+      <description>Some builds may need pre-build steps before building, e.g. go generate. The before section allows for global hooks which will be executed before the build is started.
+The configuration is very simple, here is a complete example:
+# .goreleaser.yml before: # Templates for the commands to be ran. hooks: - make clean - go generate ./... - go mod tidy - touch {{ .Env.FILE_TO_TOUCH }} If any of the hooks fails the build process is aborted.</description>
+    </item>
+    
+    <item>
+      <title>Name Templates</title>
+      <link>https://goreleaser.com/templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/templates/</guid>
+      <description>Several fields in GoReleaser&#39;s config file support templating.
+Those fields are often suffixed with _template, but sometimes they may not be. The documentation of each section should explicit in which fields templating is available.
+On fields that support templating, this fields are always available:
+   Key Description     .ProjectName the project name   .Version the version being released (v prefix stripped)   .Tag the current git tag   .</description>
+    </item>
+    
+    <item>
+      <title>Builds</title>
+      <link>https://goreleaser.com/build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/build/</guid>
+      <description>Builds can be customized in multiple ways. You can specify for which GOOS, GOARCH and GOARM binaries are built (goreleaser will generate a matrix of all combinations), and you can changed the name of the binary, flags, environment variables, hooks and etc.
+Here is a commented builds section with all fields specified:
+# .goreleaser.yml builds: # You can have multiple builds defined as a yaml list - # ID of the build.</description>
+    </item>
+    
+    <item>
+      <title>Customization</title>
+      <link>https://goreleaser.com/customization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/customization/</guid>
+      <description>GoReleaser provides multiple customizations via the .goreleaser.yml file.
+You can generate it by running goreleaser init or start from scratch. The defaults are sensible and fit for most projects.</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://goreleaser.com/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/archive/</guid>
+      <description>The binaries built will be archived together with the README and LICENSE files into a tar.gz file. In the archives section you can customize the archive name, additional files, and format.
+Here is a commented archives section with all fields specified:
+# .goreleaser.yml archives: - # ID of this archive. # Defaults to `default`. id: my-archive # Builds reference which build instances should be archived in this archive. builds: - default # Archive name template.</description>
+    </item>
+    
+    <item>
+      <title>Checksum</title>
+      <link>https://goreleaser.com/checksum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/checksum/</guid>
+      <description>GoReleaser generates a project_1.0.0_checksums.txt file and uploads it with the release, so your users can validate if the downloaded files are correct.
+The checksum section allows customizations of the filename:
+# .goreleaser.yml checksum: # You can change the name of the checksums file. # Default is `{{ .ProjectName }}_{{ .Version }}_checksums.txt`. name_template: &amp;#34;{{ .ProjectName }}_checksums.txt&amp;#34; # Algorithm to be used. # Accepted options are sha256, sha512, sha1, crc32, md5, sha224 and sha384.</description>
+    </item>
+    
+    <item>
+      <title>Signing</title>
+      <link>https://goreleaser.com/sign/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/sign/</guid>
+      <description>GoReleaser can sign some or all of the generated artifacts. Signing ensures that the artifacts have been generated by yourself and your users can verify that by comparing the generated signature with your public signing key.
+Signing works in combination with checksum files and it is generally sufficient to sign the checksum files only.
+The default is configured to create a detached signature for the checksum files with GnuPG and your default key.</description>
+    </item>
+    
+    <item>
+      <title>Snapshots</title>
+      <link>https://goreleaser.com/snapshots/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/snapshots/</guid>
+      <description>Sometimes we want to generate a full build of our project, but neither want to validate anything nor upload it to anywhere.
+GoReleaser supports this with the --snapshot flag and also with the snapshot customization section:
+# .goreleaser.yml snapshot: # Allows you to change the name of the generated snapshot # # Note that some pipes require this to be semantic version compliant (nfpm, # for example). # # Default is `{{ .</description>
+    </item>
+    
+    <item>
+      <title>NFPM</title>
+      <link>https://goreleaser.com/nfpm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/nfpm/</guid>
+      <description>GoReleaser can be wired to nfpm to generate and publish .deb and .rpm packages.
+Available options:
+# .goreleaser.yml nfpms: # note that this is an array of nfpm configs - # ID of the nfpm config, must be unique. # Defaults to &amp;#34;default&amp;#34;. id: foo # Name of the package. # Defaults to `ProjectName`. package_name: foo # You can change the file name of the package. # Default: `{{ .ProjectName }}_{{ .</description>
+    </item>
+    
+    <item>
+      <title>Snapcraft</title>
+      <link>https://goreleaser.com/snapcraft/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/snapcraft/</guid>
+      <description>GoReleaser can also generate snap packages. Snaps are a new packaging format, that will let you publish your project directly to the Ubuntu store. From there it will be installable in all the supported Linux distros, with automatic and transactional updates.
+You can read more about it in the snapcraft docs.
+Available options:
+# .goreleaser.yml snapcrafts: - # ID of the snapcraft config, must be unique. # Defaults to &amp;#34;default&amp;#34;. id: foo # Build IDs for the builds you want to create snapcraft packages for.</description>
+    </item>
+    
+    <item>
+      <title>Homebrew</title>
+      <link>https://goreleaser.com/homebrew/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/homebrew/</guid>
+      <description>After releasing to GitHub or GitLab, GoReleaser can generate and publish a homebrew-tap recipe into a repository that you have access to.
+The brew section specifies how the formula should be created. You can check the Homebrew documentation and the formula cookbook for more details.
+Note: If you have multiple arm 32-bit versions in each build section, and you do not specify any ids in the brew section (default to all artifacts), then goreleaser will fail.</description>
+    </item>
+    
+    <item>
+      <title>Scoop</title>
+      <link>https://goreleaser.com/scoop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/scoop/</guid>
+      <description>After releasing to GitHub or GitLab, GoReleaser can generate and publish a Scoop App Manifest into a repository that you have access to.
+The scoop section specifies how the manifest should be created. See the commented example bellow:
+# .goreleaser.yml scoop: # Template for the url which is determined by the given Token (github or gitlab) # Default for github is &amp;#34;https://github.com/&amp;lt;repo_owner&amp;gt;/&amp;lt;repo_name&amp;gt;/releases/download/{{ .Tag }}/{{ .ArtifactName }}&amp;#34; # Default for gitlab is &amp;#34;https://gitlab.</description>
+    </item>
+    
+    <item>
+      <title>Release</title>
+      <link>https://goreleaser.com/release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/release/</guid>
+      <description>GoReleaser will create a GitHub/GitLab release with the current tag, upload all the artifacts and generate the changelog based on the new commits since the previous tag.
+Let&#39;s see what can be customized in the release section for GitHub:
+# .goreleaser.yml release: # Repo in which the release will be created. # Default is extracted from the origin remote URL. # Note: it can only be one: either github or gitlab or gitea github: owner: user name: repo # IDs of the archives to use.</description>
+    </item>
+    
+    <item>
+      <title>Blob</title>
+      <link>https://goreleaser.com/blob/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/blob/</guid>
+      <description>Customization # .goreleaser.yml blobs: # You can have multiple blob configs - # Template for the cloud provider name # s3 for AWS S3 Storage # azblob for Azure Blob Storage # gs for Google Cloud Storage provider: azblob # Set a custom endpoint, useful if you&amp;#39;re using a minio backend or # other s3-compatible backends. # Implies s3ForcePathStyle and requires provider to be `s3` endpoint: https://minio.foo.bar # Sets the bucket region.</description>
+    </item>
+    
+    <item>
+      <title>S3</title>
+      <link>https://goreleaser.com/s3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/s3/</guid>
+      <description>Since v0.74.0, GoReleaser supports pushing artifacts to Amazon S3 and other API-compatible object storages (minio for example).
+Right now, the implementation is quite simple and probably won&#39;t cover all use cases. If you need one of such use cases, please open an issue/pull request.
+Here is what you can customize:
+Customization # .goreleaser.yml s3: # You can have multiple s3 configs - # Template for the bucket name(without the s3:// prefix) # Default is empty.</description>
+    </item>
+    
+    <item>
+      <title>Artifactory</title>
+      <link>https://goreleaser.com/artifactory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/artifactory/</guid>
+      <description>Since v0.38.0, GoReleaser supports building and pushing artifacts into Artifactory.
+How it works You can declare multiple Artifactory instances. All binaries generated by your builds section will be pushed to each configured Artifactory.
+If you have only one Artifactory instance, the configuration is as easy as adding the upload target and a username to your .goreleaser.yml file:
+artifactories: - name: production target: http://&amp;lt;Your-Instance&amp;gt;:8081/artifactory/example-repo-local/{{ .ProjectName }}/{{ .Version }}/ username: goreleaser Prerequisites:</description>
+    </item>
+    
+    <item>
+      <title>Bintray</title>
+      <link>https://goreleaser.com/bintray/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/bintray/</guid>
+      <description>How it works Uploading to Bintray is a simple case of using HTTP PUT.
+Pre and post requisites:  Create a user and/or an org in Bintray Create a generic repository in Bintray Create a package with a name matching your ProjectName After publishing, dont&amp;rsquo; forget to publish the uploaded files (either via UI or REST API)  puts: - name: bintray target: https://api.bintray.com/content/user.or.org.name/generic.repo.name/{{ .ProjectName }}/{{ .Version }}/ username: goreleaser Please see HTTP Put for more details.</description>
+    </item>
+    
+    <item>
+      <title>HTTP Upload</title>
+      <link>https://goreleaser.com/upload/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/upload/</guid>
+      <description>GoReleaser supports building and pushing artifacts to HTTP servers using simple HTTP requests.
+How it works You can declare multiple uploads instances. All binaries generated by your builds section will be pushed to each configured upload.
+If you have only one uploads instance, the configuration is as easy as adding the upload target and a username to your .goreleaser.yml file:
+uploads: - name: production target: http://some.server/some/path/example-repo-local/{{ .ProjectName }}/{{ .Version }}/ username: goreleaser Prerequisites:</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://goreleaser.com/ci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/ci/</guid>
+      <description>GoReleaser was built from the very first commit with the idea of running it as part of the CI pipeline in mind.
+Let&#39;s see how we can get it working on popular CI software.
+Travis CI You may want to setup your project to auto-deploy your new tags on Travis, for example:
+# .travis.yml language: go addons: apt: packages: # needed for the nfpm pipe: - rpm # needed for the snap pipe: - snapd env: # needed for the snap pipe: - PATH=/snap/bin:$PATH install: # needed for the snap pipe: - sudo snap install snapcraft --classic # needed for the docker pipe services: - docker after_success: # docker login is required if you want to push docker images.</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://goreleaser.com/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/docker/</guid>
+      <description>Since v0.31.0, GoReleaser supports building and pushing Docker images.
+How it works You can declare multiple Docker images. They will be matched against the binaries generated by your builds section.
+If you have only one build setup, the configuration is as easy as adding the name of your image to your .goreleaser.yml file:
+The docker image declaration supports templating. Learn more about the name template engine.
+dockers: - image_templates: - user/repo You also need to create a Dockerfile in your project&#39;s root folder:</description>
+    </item>
+    
+    <item>
+      <title>GitHub Actions</title>
+      <link>https://goreleaser.com/actions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/actions/</guid>
+      <description>GoReleaser can also be used within our official GoReleaser Action through GitHub Actions.
+You can create a workflow for pushing your releases by putting YAML configuration to .github/workflows/release.yml.
+Below is a simple snippet to use this action in your workflow:
+name: goreleaser on: pull_request: push: jobs: goreleaser: runs-on: ubuntu-latest steps: - name: Checkout uses: actions/checkout@v1 - name: Set up Go uses: actions/setup-go@v1 with: go-version: 1.13.x - name: Run GoReleaser uses: goreleaser/goreleaser-action@v1 with: version: latest args: release --rm-dist key: ${{ secrets.</description>
+    </item>
+    
+    <item>
+      <title>Deprecation notices</title>
+      <link>https://goreleaser.com/deprecations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/deprecations/</guid>
+      <description>This page will be used to list deprecation notices across GoReleaser.
+Deprecate code will be removed after ~6 months from the time it was deprecated.
+You can check your use of deprecated configurations by running:
+$ goreleaser check Active deprecation notices puts  since 2019-11-15
+ The HTTP upload support was extended to also accept POST as a method, so the name puts kind of lost its meaning.
+Change this:</description>
+    </item>
+    
+    <item>
+      <title>Sponsors</title>
+      <link>https://goreleaser.com/sponsors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/sponsors/</guid>
+      <description>Does your company use goreleaser? Help keep the project bug-free and feature rich by sponsoring the project.
+Backers Love our work and community? Become a backer.</description>
+    </item>
+    
+    <item>
+      <title>Contributing</title>
+      <link>https://goreleaser.com/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/contributing/</guid>
+      <description>This page will eventually have information for those who want to contribute to the project.
+Also check the CONTRIBUTING.md file on the root of our repository.</description>
+    </item>
+    
+    <item>
+      <title>Tutorials and posts</title>
+      <link>https://goreleaser.com/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/tutorials/</guid>
+      <description>Tutorials made by the community.
+ Creating debs and rpms with Go Fast and easy Go binaries delivery GoReleaser Docker Support GoReleaser: build and push Snapcraft packages from TravisCI Painless Github releases with Drone and GoReleaser Shipping Rust Binaries with GoReleaser Cross compile with CGO and GoReleaser GoReleaser + Drone + Github: Tutorial Go Release Automation with goreleaser + GitHub Actions  Want to add your tutorial here? Please do! Click on the improve this page link bellow!</description>
+    </item>
+    
+    <item>
+      <title>Links</title>
+      <link>https://goreleaser.com/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://goreleaser.com/links/</guid>
+      <description>Follow the progress on the GitHub repository Follow @goreleaser on Twitter for updates Ask questions on StackOverflow Chat on Slack to chat about GoReleaser, questions, etc. Join using this link Contributing Guidelines  This project adheres to the Contributor Covenant code of conduct. By participating, you are expected to uphold this code.</description>
+    </item>
+    
+  </channel>
+</rss>

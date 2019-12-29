@@ -1,0 +1,2105 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Customization &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="GoReleaser">
+		<meta name="description" content="Deliver Go binaries as fast and easily as possible">
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.62.0" />
+		<link rel="icon" href="favicon.ico">
+		<meta name="theme-color" content="#000">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="black">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@goreleaser">
+		<meta name="twitter:creator" content="@goreleaser">
+		<meta name="twitter:title" content="GoReleaser">
+		<meta name="twitter:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="twitter:image" content="https://goreleaser.com/card.png">
+		<meta name="og:title" content="GoReleaser">
+		<meta name="og:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="og:url" content="https://goreleaser.com/">
+		<meta name="og:image" content="https://goreleaser.com/card.png">
+		<meta property="og:type" content="website" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://github.com/goreleaser.png" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/install/">Install</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/actions/">GitHub Actions</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contributing/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials and posts</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<h1>Customization</h1>
+
+	<p>GoReleaser provides multiple customizations via the <code>.goreleaser.yml</code> file.</p>
+<p>You can generate it by running <code>goreleaser init</code> or start from scratch.
+The defaults are sensible and fit for most projects.</p>
+
+
+	<h2>Table of Contents:</h2>
+	<ul class="Menu" style="padding: 0px; position: inherit; margin: 15px 0 0px 20px;">
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Project%20Name">Project Name</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Environment%20Variables">Environment Variables</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Global%20Hooks">Global Hooks</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Name%20Templates">Name Templates</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Builds">Builds</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Archive">Archive</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Checksum">Checksum</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Signing">Signing</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Snapshots">Snapshots</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#NFPM">NFPM</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Snapcraft">Snapcraft</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Homebrew">Homebrew</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Scoop">Scoop</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Release">Release</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Blob">Blob</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#S3">S3</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Artifactory">Artifactory</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Bintray">Bintray</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#HTTP%20Upload">HTTP Upload</a>
+			</li>
+		
+			<li class="item" style="padding: 0px">
+				<a href="#Docker">Docker</a>
+			</li>
+		
+	</ul>
+
+	
+		<div class="Page" id="Project Name">
+			<h1><a href="https://goreleaser.com/project/">Project Name</a></h1>
+			<p>The project name is used in the name of the Brew formula, archives, etc.
+If none is given, it will be inferred from the name of the Git project.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+project_name: myproject
+</code></pre></div>
+		</div>
+	
+		<div class="Page" id="Environment Variables">
+			<h1><a href="https://goreleaser.com/env/">Environment Variables</a></h1>
+			<p>Global environment variables to be passed down to all hooks and builds.</p>
+<p>This is useful for <code>GO111MODULE</code>, for example. You can have your
+<code>.goreleaser.yaml</code> file like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod tidy
+builds:
+- binary: program
+</code></pre></div><p>This way, both <code>go mod tidy</code> and the underlying <code>go build</code> will have
+<code>GO111MODULE</code> set to <code>on</code>.</p>
+
+		</div>
+	
+		<div class="Page" id="Global Hooks">
+			<h1><a href="https://goreleaser.com/hooks/">Global Hooks</a></h1>
+			<p>Some builds may need pre-build steps before building, e.g. <code>go generate</code>.
+The <code>before</code> section allows for global hooks which will be executed before
+the build is started.</p>
+<p>The configuration is very simple, here is a complete example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+before:
+  <span style="color:#6272a4"># Templates for the commands to be ran.</span>
+  hooks:
+  - make clean
+  - go generate ./...
+  - go mod tidy
+  - touch {{ .Env.FILE_TO_TOUCH }}
+</code></pre></div><p>If any of the hooks fails the build process is aborted.</p>
+<p>It is important to note that you can't have &ldquo;complex&rdquo; commands, like
+<code>bash -c &quot;echo foo bar&quot;</code> or <code>foo | bar</code> or anything like that. If you need
+to do things that are more complex than just calling a command with some
+attributes, wrap it in a shell script or into your <code>Makefile</code>.</p>
+<blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+
+		</div>
+	
+		<div class="Page" id="Name Templates">
+			<h1><a href="https://goreleaser.com/templates/">Name Templates</a></h1>
+			<p>Several fields in GoReleaser's config file support templating.</p>
+<p>Those fields are often suffixed with <code>_template</code>, but sometimes they may not
+be. The documentation of each section should explicit in which fields
+templating is available.</p>
+<p>On fields that support templating, this fields are always available:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>.ProjectName</code></td>
+<td align="center">the project name</td>
+</tr>
+<tr>
+<td align="center"><code>.Version</code></td>
+<td align="center">the version being released (<code>v</code> prefix stripped)</td>
+</tr>
+<tr>
+<td align="center"><code>.Tag</code></td>
+<td align="center">the current git tag</td>
+</tr>
+<tr>
+<td align="center"><code>.ShortCommit</code></td>
+<td align="center">the git commit short hash</td>
+</tr>
+<tr>
+<td align="center"><code>.FullCommit</code></td>
+<td align="center">the git commit full hash</td>
+</tr>
+<tr>
+<td align="center"><code>.Commit</code></td>
+<td align="center">the git commit hash (deprecated)</td>
+</tr>
+<tr>
+<td align="center"><code>.GitURL</code></td>
+<td align="center">the git remote url</td>
+</tr>
+<tr>
+<td align="center"><code>.Major</code></td>
+<td align="center">the major part of the version</td>
+</tr>
+<tr>
+<td align="center"><code>.Minor</code></td>
+<td align="center">the minor part of the version</td>
+</tr>
+<tr>
+<td align="center"><code>.Patch</code></td>
+<td align="center">the patch part of the version</td>
+</tr>
+<tr>
+<td align="center"><code>.Env</code></td>
+<td align="center">a map with system's environment variables</td>
+</tr>
+<tr>
+<td align="center"><code>.Date</code></td>
+<td align="center">current UTC date in RFC3339 format</td>
+</tr>
+<tr>
+<td align="center"><code>.Timestamp</code></td>
+<td align="center">current UTC time in Unix format</td>
+</tr>
+</tbody>
+</table>
+<p>On fields that are related to a single artifact (e.g., the binary name), you
+may have some extra fields:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>.Os</code></td>
+<td align="center"><code>GOOS</code> (usually allow replacements)</td>
+</tr>
+<tr>
+<td align="center"><code>.Arch</code></td>
+<td align="center"><code>GOARCH</code> (usually allow replacements)</td>
+</tr>
+<tr>
+<td align="center"><code>.Arm</code></td>
+<td align="center"><code>GOARM</code> (usually allow replacements)</td>
+</tr>
+<tr>
+<td align="center"><code>.Binary</code></td>
+<td align="center">Binary name</td>
+</tr>
+<tr>
+<td align="center"><code>.ArtifactName</code></td>
+<td align="center">Archive name</td>
+</tr>
+</tbody>
+</table>
+<p>On all fields, you have these available functions:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Usage</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>replace &quot;v1.2&quot; &quot;v&quot; &quot;&quot;</code></td>
+<td align="center">replaces all macthes. See <a href="https://golang.org/pkg/strings/#ReplaceAll">ReplaceAll</a></td>
+</tr>
+<tr>
+<td align="center"><code>time &quot;01/02/2006&quot;</code></td>
+<td align="center">current UTC time in the specified format</td>
+</tr>
+<tr>
+<td align="center"><code>tolower &quot;V1.2&quot;</code></td>
+<td align="center">makes input string lowercase. See <a href="https://golang.org/pkg/strings/#ToLower">ToLower</a></td>
+</tr>
+<tr>
+<td align="center"><code>toupper &quot;v1.2&quot;</code></td>
+<td align="center">makes input string uppercase. See <a href="https://golang.org/pkg/strings/#ToUpper">ToUpper</a></td>
+</tr>
+<tr>
+<td align="center"><code>trim &quot; v1.2  &quot;</code></td>
+<td align="center">removes all leading and trailing white space. See <a href="https://golang.org/pkg/strings/#TrimSpace">TrimSpace</a></td>
+</tr>
+</tbody>
+</table>
+<p>With all those fields, you may be able to compose the name of your artifacts
+pretty much the way you want:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">example_template: <span style="color:#f1fa8c">&#39;{{ tolower .ProjectName }}_{{ .Env.USER }}_{{ time &#34;2006&#34; }}&#39;</span>
+</code></pre></div><p>For example, if you want to add the go version to some artifact:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">foo_template: <span style="color:#f1fa8c">&#39;foo_{{ .Env.GOVERSION }}&#39;</span>
+</code></pre></div><p>And then you can run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8be9fd;font-style:italic">GOVERSION_NR</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>go version | awk <span style="color:#f1fa8c">&#39;{print $3;}&#39;</span><span style="color:#ff79c6">)</span> goreleaser
+</code></pre></div><blockquote>
+<p>Note that those are hypothetical examples and the fields <code>foo_template</code> and
+<code>example_template</code> are not valid GoReleaser configurations.</p>
+</blockquote>
+
+		</div>
+	
+		<div class="Page" id="Builds">
+			<h1><a href="https://goreleaser.com/build/">Builds</a></h1>
+			<p>Builds can be customized in multiple ways.
+You can specify for which <code>GOOS</code>, <code>GOARCH</code> and <code>GOARM</code> binaries are built
+(goreleaser will generate a matrix of all combinations), and you can changed
+the name of the binary, flags, environment variables, hooks and etc.</p>
+<p>Here is a commented <code>builds</code> section with all fields specified:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+builds:
+  <span style="color:#6272a4"># You can have multiple builds defined as a yaml list</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># ID of the build.</span>
+    <span style="color:#6272a4"># Defaults to the project name.</span>
+    id: <span style="color:#f1fa8c">&#34;my-build&#34;</span>
+
+    <span style="color:#6272a4"># Path to main.go file or main package.</span>
+    <span style="color:#6272a4"># Default is `.`.</span>
+    main: ./cmd/main.go
+
+    <span style="color:#6272a4"># Binary name.</span>
+    <span style="color:#6272a4"># Can be a path (e.g. `bin/app`) to wrap the binary in a directory.</span>
+    <span style="color:#6272a4"># Default is the name of the project directory.</span>
+    binary: program
+
+    <span style="color:#6272a4"># Custom flags templates.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    flags:
+      - -tags=dev
+      - -v
+
+    <span style="color:#6272a4"># Custom asmflags templates.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    asmflags:
+      - -D mysymbol
+      - all=-trimpath={{.Env.GOPATH}}
+
+    <span style="color:#6272a4"># Custom gcflags templates.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+      - ./dontoptimizeme=-N
+
+    <span style="color:#6272a4"># Custom ldflags templates.</span>
+    <span style="color:#6272a4"># Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser`.</span>
+    ldflags:
+     - -s -w -X main.build={{.Version}}
+     - ./usemsan=-msan
+
+    <span style="color:#6272a4"># Custom environment variables to be set during the builds.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    env:
+      - CGO_ENABLED=<span style="color:#bd93f9">0</span>
+
+    <span style="color:#6272a4"># GOOS list to build for.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Defaults are darwin and linux.</span>
+    goos:
+      - freebsd
+      - windows
+
+    <span style="color:#6272a4"># GOARCH to build for.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Defaults are 386 and amd64.</span>
+    goarch:
+      - amd64
+      - arm
+      - arm64
+
+    <span style="color:#6272a4"># GOARM to build for when GOARCH is arm.</span>
+    <span style="color:#6272a4"># For more info refer to: https://golang.org/doc/install/source#environment</span>
+    <span style="color:#6272a4"># Default is only 6.</span>
+    goarm:
+      - <span style="color:#bd93f9">6</span>
+      - <span style="color:#bd93f9">7</span>
+
+    <span style="color:#6272a4"># List of combinations of GOOS + GOARCH + GOARM to ignore.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    ignore:
+      - goos: darwin
+        goarch: <span style="color:#bd93f9">386</span>
+      - goos: linux
+        goarch: arm
+        goarm: <span style="color:#bd93f9">7</span>
+
+    <span style="color:#6272a4"># Hooks can be used to customize the final binary,</span>
+    <span style="color:#6272a4"># for example, to run generators.</span>
+    <span style="color:#6272a4"># Those fields allow templates.</span>
+    <span style="color:#6272a4"># Default is both hooks empty.</span>
+    hooks:
+      pre: rice embed-go
+      post: ./script.sh
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<h2 id="passing-environment-variables-to-ldflags">Passing environment variables to ldflags</h2>
+<p>You can do that by using <code>{{ .Env.VARIABLE_NAME }}</code> in the template, for
+example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">builds:
+  - ldflags:
+   - -s -w -X <span style="color:#f1fa8c">&#34;main.goversion={{.Env.GOVERSION}}&#34;</span>
+</code></pre></div><p>Then you can run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8be9fd;font-style:italic">GOVERSION</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>go version<span style="color:#ff79c6">)</span> goreleaser
+</code></pre></div><h2 id="go-modules">Go Modules</h2>
+<p>If you use Go 1.11+ with go modules or vgo, when GoReleaser runs it may
+try to download the dependencies. Since several builds run in parallel, it is
+very likely to fail.</p>
+<p>You can solve this by running <code>go mod tidy</code> before calling <code>goreleaser</code> or
+by adding a <a href="/hooks">hook</a> doing that on your <code>.goreleaser.yaml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">before:
+  hooks:
+  - go mod tidy
+<span style="color:#6272a4"># rest of the file...</span>
+</code></pre></div>
+		</div>
+	
+		<div class="Page" id="Archive">
+			<h1><a href="https://goreleaser.com/archive/">Archive</a></h1>
+			<p>The binaries built will be archived together with the <code>README</code> and <code>LICENSE</code> files into a
+<code>tar.gz</code> file. In the <code>archives</code> section you can customize the archive name,
+additional files, and format.</p>
+<p>Here is a commented <code>archives</code> section with all fields specified:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+archives:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># ID of this archive.</span>
+    <span style="color:#6272a4"># Defaults to `default`.</span>
+    id: my-archive
+
+    <span style="color:#6272a4"># Builds reference which build instances should be archived in this archive.</span>
+    builds:
+    - default
+
+    <span style="color:#6272a4"># Archive name template.</span>
+    <span style="color:#6272a4"># Defaults:</span>
+    <span style="color:#6272a4"># - if format is `tar.gz`, `gz` or `zip`:</span>
+    <span style="color:#6272a4">#   - `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    <span style="color:#6272a4"># - if format is `binary`:</span>
+    <span style="color:#6272a4">#   - `{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}&#34;</span>
+
+    <span style="color:#6272a4"># Replacements for GOOS and GOARCH in the archive name.</span>
+    <span style="color:#6272a4"># Keys should be valid GOOSs or GOARCHs.</span>
+    <span style="color:#6272a4"># Values are the respective replacements.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    replacements:
+      amd64: <span style="color:#bd93f9">64</span>-bit
+      <span style="color:#bd93f9">386</span>: <span style="color:#bd93f9">32</span>-bit
+      darwin: macOS
+      linux: Tux
+
+    <span style="color:#6272a4"># Set to true, if you want all files in the archive to be in a single directory.</span>
+    <span style="color:#6272a4"># If set to true and you extract the archive &#39;goreleaser_Linux_arm64.tar.gz&#39;,</span>
+    <span style="color:#6272a4"># you get a folder &#39;goreleaser_Linux_arm64&#39;.</span>
+    <span style="color:#6272a4"># If set to false, all files are extracted separately.</span>
+    <span style="color:#6272a4"># You can also set it to a custom folder name (templating is supported).</span>
+    <span style="color:#6272a4"># Default is false.</span>
+    wrap_in_directory: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Archive format. Valid options are `tar.gz`, `gz`, `zip` and `binary`.</span>
+    <span style="color:#6272a4"># If format is `binary`, no archives are created and the binaries are instead</span>
+    <span style="color:#6272a4"># uploaded directly.</span>
+    <span style="color:#6272a4"># Default is `tar.gz`.</span>
+    format: zip
+
+    <span style="color:#6272a4"># Can be used to change the archive formats for specific GOOSs.</span>
+    <span style="color:#6272a4"># Most common use case is to archive as zip on Windows.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    format_overrides:
+      - goos: windows
+        format: zip
+
+    <span style="color:#6272a4"># Additional files/globs you want to add to the archive.</span>
+    <span style="color:#6272a4"># Defaults are any files matching `LICENCE*`, `LICENSE*`,</span>
+    <span style="color:#6272a4"># `README*` and `CHANGELOG*` (case-insensitive).</span>
+    files:
+      - LICENSE.txt
+      - README.md
+      - CHANGELOG.md
+      - docs/*
+      - design/<span style="color:#ff79c6">*.png</span>
+      - templates/<span style="color:#ff79c6">**/*</span>
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>You can add entire folders, its subfolders and files by using the glob notation,
+for example: <code>myfolder/**/*</code>.</p>
+<h2 id="packaging-only-the-binaries">Packaging only the binaries</h2>
+<p>Since GoReleaser will always add the <code>README</code> and <code>LICENSE</code> files to the
+archive if the file list is empty, you'll need to provide a filled <code>files</code>
+on the archive section.</p>
+<p>A working hack is to use something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># goreleaser.yml</span>
+archives:
+- files:
+  - none*
+</code></pre></div><p>This would add all files matching the glob <code>none*</code>, provide that you don't
+have any files matching that glob, only the binary will be added to the
+archive.</p>
+<p>For more information, check <a href="https://github.com/goreleaser/goreleaser/issues/602">#602</a></p>
+<h2 id="a-note-about-gzip">A note about Gzip</h2>
+<p>Gzip is a compression-only format, therefore, it couldn't have more than one
+file inside.</p>
+<p>Presumably, you'll want that file to be the binary, so, your archive section
+will probably look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># goreleaser.yml</span>
+archives:
+- format: gz
+  files:
+  - none*
+</code></pre></div><p>This should create <code>.gz</code> files with the binaries only, which should be
+extracted with something like <code>gzip -d file.gz</code>.</p>
+<p>Multiple builds will also not work in this case and will be handled on
+<a href="https://github.com/goreleaser/goreleaser/issues/705">#705</a>.</p>
+
+		</div>
+	
+		<div class="Page" id="Checksum">
+			<h1><a href="https://goreleaser.com/checksum/">Checksum</a></h1>
+			<p>GoReleaser generates a <code>project_1.0.0_checksums.txt</code> file and uploads it with the
+release, so your users can validate if the downloaded files are correct.</p>
+<p>The <code>checksum</code> section allows customizations of the filename:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+checksum:
+  <span style="color:#6272a4"># You can change the name of the checksums file.</span>
+  <span style="color:#6272a4"># Default is `{{ .ProjectName }}_{{ .Version }}_checksums.txt`.</span>
+  name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}_checksums.txt&#34;</span>
+
+  <span style="color:#6272a4"># Algorithm to be used.</span>
+  <span style="color:#6272a4"># Accepted options are sha256, sha512, sha1, crc32, md5, sha224 and sha384.</span>
+  <span style="color:#6272a4"># Default is sha256.</span>
+  algorithm: sha256
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+
+		</div>
+	
+		<div class="Page" id="Signing">
+			<h1><a href="https://goreleaser.com/sign/">Signing</a></h1>
+			<p>GoReleaser can sign some or all of the generated artifacts. Signing ensures
+that the artifacts have been generated by yourself and your users can verify
+that by comparing the generated signature with your public signing key.</p>
+<p>Signing works in combination with checksum files and it is generally sufficient
+to sign the checksum files only.</p>
+<p>The default is configured to create a detached signature for the checksum files
+with <a href="https://www.gnupg.org/">GnuPG</a> and your default key. To enable signing
+just add</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># goreleaser.yml</span>
+signs:
+  - artifacts: checksum
+</code></pre></div><p>To customize the signing pipeline you can use the following options:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+signs:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># name of the signature file.</span>
+    <span style="color:#6272a4"># &#39;${artifact}&#39; is the path to the artifact that should be signed.</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4"># defaults to `${artifact}.sig`</span>
+    signature: <span style="color:#f1fa8c">&#34;${artifact}_sig&#34;</span>
+
+    <span style="color:#6272a4"># path to the signature command</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4"># defaults to `gpg`</span>
+    cmd: gpg2
+
+    <span style="color:#6272a4"># command line arguments for the command</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4"># to sign with a specific key use</span>
+    <span style="color:#6272a4"># args: [&#34;-u&#34;, &#34;&lt;key id, fingerprint, email, ...&gt;&#34;, &#34;--output&#34;, &#34;${signature}&#34;, &#34;--detach-sign&#34;, &#34;${artifact}&#34;]</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4"># defaults to `[&#34;--output&#34;, &#34;${signature}&#34;, &#34;--detach-sign&#34;, &#34;${artifact}&#34;]`</span>
+    args: [<span style="color:#f1fa8c">&#34;--output&#34;</span>, <span style="color:#f1fa8c">&#34;${signature}&#34;</span>, <span style="color:#f1fa8c">&#34;${artifact}&#34;</span>]
+
+
+    <span style="color:#6272a4"># which artifacts to sign</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4">#   checksum: only checksum file(s)</span>
+    <span style="color:#6272a4">#   all:      all artifacts</span>
+    <span style="color:#6272a4">#   none:     no signing</span>
+    <span style="color:#6272a4">#</span>
+    <span style="color:#6272a4"># defaults to `none`</span>
+    artifacts: all
+
+    <span style="color:#6272a4"># IDs of the artifacts to sign.</span>
+    <span style="color:#6272a4"># Defaults to all.</span>
+    <span style="color:#6272a4"># If `artifacts` is checksum, this fields has no effect.</span>
+    ids:
+      - foo
+      - bar
+</code></pre></div><h2 id="signing-with-gon">Signing with gon</h2>
+<p>You can use <a href="https://github.com/mitchellh/gon">gon</a> to create notarized macOS apps. Here's an example config:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">builds:
+- binary: foo
+  id: foo
+  goos:
+  - linux
+  - windows
+  goarch:
+  - amd64
+<span style="color:#6272a4"># notice that we need a separated build for the macos binary only:</span>
+- binary: foo
+  id: foo-macos
+  goos:
+  - darwin
+  goarch:
+  - amd64
+signs:
+  - signature: <span style="color:#f1fa8c">&#34;${artifact}.dmg&#34;</span>
+    ids:
+    - foo-macos <span style="color:#6272a4"># here we filter the macos only build id</span>
+    <span style="color:#6272a4"># you&#39;ll need to have gon on PATH</span>
+    cmd: gon
+    <span style="color:#6272a4"># you can follow the gon docs to properly create the gon.hcl config file:</span>
+    <span style="color:#6272a4"># https://github.com/mitchellh/gon</span>
+    args:
+    - gon.hcl
+    artifacts: all
+</code></pre></div><p>Note that notarizing take some time, and will need to be run from a macOS machine.</p>
+<p>You can also check <a href="https://github.com/goreleaser/goreleaser/issues/1227">this issue</a> for more details.</p>
+
+		</div>
+	
+		<div class="Page" id="Snapshots">
+			<h1><a href="https://goreleaser.com/snapshots/">Snapshots</a></h1>
+			<p>Sometimes we want to generate a full build of our project,
+but neither want to validate anything nor upload it to anywhere.</p>
+<p>GoReleaser supports this with the <code>--snapshot</code> flag
+and also with the <code>snapshot</code> customization section:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+snapshot:
+  <span style="color:#6272a4"># Allows you to change the name of the generated snapshot</span>
+  <span style="color:#6272a4">#</span>
+  <span style="color:#6272a4"># Note that some pipes require this to be semantic version compliant (nfpm,</span>
+  <span style="color:#6272a4"># for example).</span>
+  <span style="color:#6272a4">#</span>
+  <span style="color:#6272a4"># Default is `{{ .Tag }}-SNAPSHOT-{{.ShortCommit}}`.</span>
+  name_template: <span style="color:#bd93f9">1.2</span><span style="color:#bd93f9">.3</span>-SNAPSHOT-{{.Commit}}
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>Note that the idea behind GoReleaser's snapshots if mostly for local builds
+or to validate your build on the CI pipeline. Artifacts shouldn't be uploaded
+anywhere, and will only be generated to the <code>dist</code> folder.</p>
+
+		</div>
+	
+		<div class="Page" id="NFPM">
+			<h1><a href="https://goreleaser.com/nfpm/">NFPM</a></h1>
+			<p>GoReleaser can be wired to <a href="https://github.com/goreleaser/nfpm">nfpm</a> to
+generate and publish <code>.deb</code> and <code>.rpm</code> packages.</p>
+<p>Available options:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+nfpms:
+  <span style="color:#6272a4"># note that this is an array of nfpm configs</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># ID of the nfpm config, must be unique.</span>
+    <span style="color:#6272a4"># Defaults to &#34;default&#34;.</span>
+    id: foo
+
+    <span style="color:#6272a4"># Name of the package.</span>
+    <span style="color:#6272a4"># Defaults to `ProjectName`.</span>
+    package_name: foo
+
+    <span style="color:#6272a4"># You can change the file name of the package.</span>
+    <span style="color:#6272a4"># Default: `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    file_name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}&#34;</span>
+
+    <span style="color:#6272a4"># Build IDs for the builds you want to create NFPM packages for.</span>
+    <span style="color:#6272a4"># Defaults to all builds.</span>
+    builds:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># Replacements for GOOS and GOARCH in the package name.</span>
+    <span style="color:#6272a4"># Keys should be valid GOOSs or GOARCHs.</span>
+    <span style="color:#6272a4"># Values are the respective replacements.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    replacements:
+      amd64: <span style="color:#bd93f9">64</span>-bit
+      <span style="color:#bd93f9">386</span>: <span style="color:#bd93f9">32</span>-bit
+      darwin: macOS
+      linux: Tux
+
+    <span style="color:#6272a4"># Your app&#39;s vendor.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    vendor: Drum Roll Inc.
+    <span style="color:#6272a4"># Your app&#39;s homepage.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    homepage: https://example.com/
+
+    <span style="color:#6272a4"># Your app&#39;s maintainer (probably you).</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    maintainer: Drummer &lt;drum-roll@example.com<span style="color:#f1fa8c">&gt;
+</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Your app&#39;s description.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    description: Software to create fast and easy drum rolls.
+
+    <span style="color:#6272a4"># Your app&#39;s license.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    license: Apache <span style="color:#bd93f9">2.0</span>
+
+    <span style="color:#6272a4"># Formats to be generated.</span>
+    formats:
+      - deb
+      - rpm
+
+    <span style="color:#6272a4"># Packages your package depends on.</span>
+    dependencies:
+      - git
+      - zsh
+
+    <span style="color:#6272a4"># Packages your package recommends installing.</span>
+    recommends:
+      - bzr
+      - gtk
+
+    <span style="color:#6272a4"># Packages your package suggests installing.</span>
+    suggests:
+      - cvs
+      - ksh
+
+    <span style="color:#6272a4"># Packages that conflict with your package.</span>
+    conflicts:
+      - svn
+      - bash
+
+    <span style="color:#6272a4"># Override default /usr/local/bin destination for binaries</span>
+    bindir: /usr/bin
+
+    <span style="color:#6272a4"># Package epoch.</span>
+    <span style="color:#6272a4"># Defaults to empty.</span>
+    epoch: <span style="color:#bd93f9">1</span>
+
+    <span style="color:#6272a4"># Empty folders that should be created and managed by the packager</span>
+    <span style="color:#6272a4"># implementation.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    empty_folders:
+    - /var/log/foobar
+
+    <span style="color:#6272a4"># Files to add to your package (beyond the binary).</span>
+    <span style="color:#6272a4"># Keys are source paths/globs to get the files from.</span>
+    <span style="color:#6272a4"># Values are the destination locations of the files in the package.</span>
+    <span style="color:#6272a4"># Use globs to add all contents of a folder.</span>
+    files:
+      <span style="color:#f1fa8c">&#34;scripts/etc/init.d/**&#34;</span>: <span style="color:#f1fa8c">&#34;/etc/init.d&#34;</span>
+      <span style="color:#f1fa8c">&#34;path/**/glob&#34;</span>: <span style="color:#f1fa8c">&#34;/var/foo/glob&#34;</span>
+
+    <span style="color:#6272a4"># Config files to add to your package. They are about the same as</span>
+    <span style="color:#6272a4"># the files keyword, except package managers treat them differently (while</span>
+    <span style="color:#6272a4"># uninstalling, mostly).</span>
+    <span style="color:#6272a4"># Keys are source paths/globs to get the files from.</span>
+    <span style="color:#6272a4"># Values are the destination locations of the files in the package.</span>
+    config_files:
+      <span style="color:#f1fa8c">&#34;tmp/app_generated.conf&#34;</span>: <span style="color:#f1fa8c">&#34;/etc/app.conf&#34;</span>
+      <span style="color:#f1fa8c">&#34;conf/*.conf&#34;</span>: <span style="color:#f1fa8c">&#34;/etc/foo/&#34;</span>
+
+    <span style="color:#6272a4"># Scripts to execute during the installation of the package.</span>
+    <span style="color:#6272a4"># Keys are the possible targets during the installation process</span>
+    <span style="color:#6272a4"># Values are the paths to the scripts which will be executed</span>
+    scripts:
+      preinstall: <span style="color:#f1fa8c">&#34;scripts/preinstall.sh&#34;</span>
+      postinstall: <span style="color:#f1fa8c">&#34;scripts/postinstall.sh&#34;</span>
+      preremove: <span style="color:#f1fa8c">&#34;scripts/preremove.sh&#34;</span>
+      postremove: <span style="color:#f1fa8c">&#34;scripts/postremove.sh&#34;</span>
+
+    <span style="color:#6272a4"># Some attributes can be overrided per package format.</span>
+    overrides:
+      deb:
+        conflicts:
+          - subversion
+        dependencies:
+          - git
+        suggests:
+          - gitk
+        recommends:
+          - tig
+        empty_folders:
+        - /var/log/bar
+      rpm:
+        replacements:
+          amd64: x86_64
+        name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}-{{ .Version }}-{{ .Arch }}&#34;</span>
+        files:
+          <span style="color:#f1fa8c">&#34;tmp/man.gz&#34;</span>: <span style="color:#f1fa8c">&#34;/usr/share/man/man8/app.8.gz&#34;</span>
+        config_files:
+          <span style="color:#f1fa8c">&#34;tmp/app_generated.conf&#34;</span>: <span style="color:#f1fa8c">&#34;/etc/app-rpm.conf&#34;</span>
+        scripts:
+          preinstall: <span style="color:#f1fa8c">&#34;scripts/preinstall-rpm.sh&#34;</span>
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+
+		</div>
+	
+		<div class="Page" id="Snapcraft">
+			<h1><a href="https://goreleaser.com/snapcraft/">Snapcraft</a></h1>
+			<p>GoReleaser can also generate <code>snap</code> packages.
+<a href="http://snapcraft.io/">Snaps</a> are a new packaging format, that will let you
+publish your project directly to the Ubuntu store.
+From there it will be installable in all the
+<a href="https://snapcraft.io/docs/core/install">supported Linux distros</a>, with
+automatic and transactional updates.</p>
+<p>You can read more about it in the <a href="https://snapcraft.io/docs/">snapcraft docs</a>.</p>
+<p>Available options:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+snapcrafts:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># ID of the snapcraft config, must be unique.</span>
+    <span style="color:#6272a4"># Defaults to &#34;default&#34;.</span>
+    id: foo
+
+    <span style="color:#6272a4"># Build IDs for the builds you want to create snapcraft packages for.</span>
+    <span style="color:#6272a4"># Defaults to all builds.</span>
+    builds:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># You can change the name of the package.</span>
+    <span style="color:#6272a4"># Default: `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}&#34;</span>
+
+    <span style="color:#6272a4"># Replacements for GOOS and GOARCH in the package name.</span>
+    <span style="color:#6272a4"># Keys should be valid GOOSs or GOARCHs.</span>
+    <span style="color:#6272a4"># Values are the respective replacements.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    replacements:
+      amd64: <span style="color:#bd93f9">64</span>-bit
+      <span style="color:#bd93f9">386</span>: <span style="color:#bd93f9">32</span>-bit
+      darwin: macOS
+      linux: Tux
+
+    <span style="color:#6272a4"># The name of the snap. This is optional.</span>
+    <span style="color:#6272a4"># Default is project name.</span>
+    name: drumroll
+
+    <span style="color:#6272a4"># Wether to publish the snap to the snapcraft store.</span>
+    <span style="color:#6272a4"># Remember you need to `snapcraft login` first.</span>
+    <span style="color:#6272a4"># Defaults to false.</span>
+    publish: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Single-line elevator pitch for your amazing snap.</span>
+    <span style="color:#6272a4"># 79 char long at most.</span>
+    summary: Software to create fast and easy drum rolls.
+
+    <span style="color:#6272a4"># This the description of your snap. You have a paragraph or two to tell the</span>
+    <span style="color:#6272a4"># most important story about your snap. Keep it under 100 words though,</span>
+    <span style="color:#6272a4"># we live in tweetspace and your description wants to look good in the snap</span>
+    <span style="color:#6272a4"># store.</span>
+    description: This is the best drum roll application out there. Install it and awe!
+
+    <span style="color:#6272a4"># A guardrail to prevent you from releasing a snap to all your users before</span>
+    <span style="color:#6272a4"># it is ready.</span>
+    <span style="color:#6272a4"># `devel` will let you release only to the `edge` and `beta` channels in the</span>
+    <span style="color:#6272a4"># store. `stable` will let you release also to the `candidate` and `stable`</span>
+    <span style="color:#6272a4"># channels. More info about channels here:</span>
+    <span style="color:#6272a4"># https://snapcraft.io/docs/reference/channels</span>
+    grade: stable
+
+    <span style="color:#6272a4"># Snaps can be setup to follow three different confinement policies:</span>
+    <span style="color:#6272a4"># `strict`, `devmode` and `classic`. A strict confinement where the snap</span>
+    <span style="color:#6272a4"># can only read and write in its own namespace is recommended. Extra</span>
+    <span style="color:#6272a4"># permissions for strict snaps can be declared as `plugs` for the app, which</span>
+    <span style="color:#6272a4"># are explained later. More info about confinement here:</span>
+    <span style="color:#6272a4"># https://snapcraft.io/docs/reference/confinement</span>
+    confinement: strict
+
+    <span style="color:#6272a4"># Your app&#39;s license, based on SPDX license expressions: https://spdx.org/licenses</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    license: MIT
+
+    <span style="color:#6272a4"># A snap of type base to be used as the execution environment for this snap.</span>
+    <span style="color:#6272a4"># Valid values are:</span>
+    <span style="color:#6272a4"># * bare - Empty base snap;</span>
+    <span style="color:#6272a4"># * core - Ubuntu Core 16;</span>
+    <span style="color:#6272a4"># * core18 - Ubuntu Core 18.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    base: core18
+
+    <span style="color:#6272a4"># Each binary built by GoReleaser is an app inside the snap. In this section</span>
+    <span style="color:#6272a4"># you can declare extra details for those binaries. It is optional.</span>
+    apps:
+
+      <span style="color:#6272a4"># The name of the app must be the same name as the binary built or the snapcraft name.</span>
+      drumroll:
+
+        <span style="color:#6272a4"># If your app requires extra permissions to work outside of its default</span>
+        <span style="color:#6272a4"># confined space, declare them here.</span>
+        <span style="color:#6272a4"># You can read the documentation about the available plugs and the</span>
+        <span style="color:#6272a4"># things they allow:</span>
+        <span style="color:#6272a4"># https://snapcraft.io/docs/reference/interfaces.</span>
+        plugs: [<span style="color:#f1fa8c">&#34;home&#34;</span>, <span style="color:#f1fa8c">&#34;network&#34;</span>, <span style="color:#f1fa8c">&#34;personal-files&#34;</span>]
+
+        <span style="color:#6272a4"># If you want your app to be autostarted and to always run in the</span>
+        <span style="color:#6272a4"># background, you can make it a simple daemon.</span>
+        daemon: simple
+
+        <span style="color:#6272a4"># If you any to pass args to your binary, you can add them with the</span>
+        <span style="color:#6272a4"># args option.</span>
+        args: --foo
+
+        <span style="color:#6272a4"># Bash completion snippet. More information about completion here:</span>
+        <span style="color:#6272a4"># https://docs.snapcraft.io/tab-completion-for-snaps.</span>
+        completer: drumroll-completion.bash
+
+    <span style="color:#6272a4"># Allows plugs to be configured. Plugs like system-files and personal-files</span>
+    <span style="color:#6272a4"># require this.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    plugs:
+      personal-files:
+        read:
+        - $HOME/.foo
+        write:
+        - $HOME/.foo
+        - $HOME/.foobar
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>Note that GoReleaser will not install <code>snapcraft</code> nor any of its dependencies
+for you.</p>
+
+		</div>
+	
+		<div class="Page" id="Homebrew">
+			<h1><a href="https://goreleaser.com/homebrew/">Homebrew</a></h1>
+			<p>After releasing to GitHub or GitLab, GoReleaser can generate and publish a <em>homebrew-tap</em>
+recipe into a repository that you have access to.</p>
+<p>The <code>brew</code> section specifies how the formula should be created.
+You can check the
+<a href="https://github.com/Homebrew/brew/blob/master/docs/How-to-Create-and-Maintain-a-Tap.md">Homebrew documentation</a>
+and the
+<a href="https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md">formula cookbook</a>
+for more details.</p>
+<p><strong>Note</strong>: If you have multiple arm 32-bit versions in each <code>build</code> section, and
+you do not specify any <code>ids</code> in the brew section (default to all artifacts), then goreleaser will fail.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+brews:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Name template of the recipe</span>
+    <span style="color:#6272a4"># Default to project name</span>
+    name: myproject
+
+    <span style="color:#6272a4"># IDs of the archives to use.</span>
+    <span style="color:#6272a4"># Defaults to all.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># GOARM to specify which 32-bit arm version to use if there are multiple versions</span>
+    <span style="color:#6272a4"># from the build section. Brew formulas support atm only one 32-bit version.</span>
+    <span style="color:#6272a4"># Default is 6 for all artifacts or each id if there a multiple versions.</span>
+    goarm: <span style="color:#bd93f9">6</span>
+
+
+    <span style="color:#6272a4"># NOTE: make sure the url_template, the token and given repo (github or gitlab) owner and name are from the</span>
+    <span style="color:#6272a4"># same kind. We will probably unify this in the next major version like it is done with scoop.</span>
+
+    <span style="color:#6272a4"># Github repository to push the tap to.</span>
+    github:
+      owner: github-user
+      name: homebrew-tap
+
+    <span style="color:#6272a4"># OR Gitlab</span>
+    <span style="color:#6272a4"># gitlab:</span>
+    <span style="color:#6272a4">#   owner: gitlab-user</span>
+    <span style="color:#6272a4">#   name: homebrew-tap</span>
+
+    <span style="color:#6272a4"># Gitea is not supported yet, but the support coming</span>
+
+    <span style="color:#6272a4"># Template for the url which is determined by the given Token (github or gitlab)</span>
+    <span style="color:#6272a4"># Default for github is &#34;https://github.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/releases/download/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+    <span style="color:#6272a4"># Default for gitlab is &#34;https://gitlab.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/uploads/{{ .ArtifactUploadHash }}/{{ .ArtifactName }}&#34;</span>
+    url_template: <span style="color:#f1fa8c">&#34;http://github.mycompany.com/foo/bar/releases/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+
+    <span style="color:#6272a4"># Allows you to set a custom download strategy. Note that you&#39;ll need</span>
+    <span style="color:#6272a4"># to implement the strategy and add it to your tap repository.</span>
+    <span style="color:#6272a4"># Example: http://lessthanhero.io/post/homebrew-with-private-repo-releases/</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+
+    <span style="color:#6272a4"># Allows you to add a custom require_relative at the top of the formula template</span>
+    <span style="color:#6272a4"># Default is empty</span>
+    custom_require: custom_download_strategy
+
+    <span style="color:#6272a4"># Git author used to commit to the repository.</span>
+    <span style="color:#6272a4"># Defaults are shown.</span>
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+
+    <span style="color:#6272a4"># Folder inside the repository to put the formula.</span>
+    <span style="color:#6272a4"># Default is the root folder.</span>
+    folder: Formula
+
+    <span style="color:#6272a4"># Caveats for the user of your binary.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    caveats: <span style="color:#f1fa8c">&#34;How to use this binary&#34;</span>
+
+    <span style="color:#6272a4"># Your app&#39;s homepage.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    homepage: <span style="color:#f1fa8c">&#34;https://example.com/&#34;</span>
+
+    <span style="color:#6272a4"># Your app&#39;s description.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    description: <span style="color:#f1fa8c">&#34;Software to create fast and easy drum rolls.&#34;</span>
+
+    <span style="color:#6272a4"># Setting this will prevent goreleaser to actually try to commit the updated</span>
+    <span style="color:#6272a4"># formula - instead, the formula file will be stored on the dist folder only,</span>
+    <span style="color:#6272a4"># leaving the responsibility of publishing it to the user.</span>
+    <span style="color:#6272a4"># If set to auto, the release will not be uploaded to the homebrew tap</span>
+    <span style="color:#6272a4"># in case there is an indicator for prerelease in the tag e.g. v1.0.0-rc1</span>
+    <span style="color:#6272a4"># Default is false.</span>
+    skip_upload: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Custom block for brew.</span>
+    <span style="color:#6272a4"># Can be used to specify alternate downloads for devel or head releases.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    custom_block: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">head &#34;https://github.com/some/package.git&#34;</span>
+      ...
+
+    <span style="color:#6272a4"># Packages your package depends on.</span>
+    dependencies:
+      - git
+      - zsh
+
+    <span style="color:#6272a4"># Packages that conflict with your package.</span>
+    conflicts:
+      - svn
+      - bash
+
+    <span style="color:#6272a4"># Specify for packages that run as a service.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    plist: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+      ...
+
+    <span style="color:#6272a4"># So you can `brew test` your formula.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    test: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">system &#34;#{bin}/program --version&#34;</span>
+      ...
+
+    <span style="color:#6272a4"># Custom install script for brew.</span>
+    <span style="color:#6272a4"># Default is &#39;bin.install &#34;program&#34;&#39;.</span>
+    install: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">bin.install &#34;program&#34;</span>
+      ...
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>By defining the <code>brew</code> section, GoReleaser will take care of publishing the
+Homebrew tap.
+Assuming that the current tag is <code>v1.2.3</code>, the above configuration will generate a
+<code>program.rb</code> formula in the <code>Formula</code> folder of <code>user/homebrew-tap</code> repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Program</span> <span style="color:#ff79c6">&lt;</span> Formula
+  desc <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">How to use this binary</span><span style="color:#f1fa8c">&#34;</span>
+  homepage <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo</span><span style="color:#f1fa8c">&#34;</span>
+  version <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">v1.2.3</span><span style="color:#f1fa8c">&#34;</span>
+
+  <span style="color:#ff79c6">if</span> os<span style="color:#ff79c6">.</span>Mac?
+    url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_macOs_64bit.zip</span><span style="color:#f1fa8c">&#34;</span>
+    sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">9ee30fc358fae8d248a2d7538957089885da321dca3f09e3296fe2058e7fff74</span><span style="color:#f1fa8c">&#34;</span>
+  <span style="color:#ff79c6">elsif</span> os<span style="color:#ff79c6">.</span>Linux?
+    url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_64bit.zip</span><span style="color:#f1fa8c">&#34;</span>
+    sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">b41bebd25fd7bb1a67dc2cd5ee12c9f67073094567fdf7b3871f05fd74a45fdd</span><span style="color:#f1fa8c">&#34;</span>
+    <span style="color:#ff79c6">if</span> Hardware<span style="color:#ff79c6">::</span>CPU<span style="color:#ff79c6">.</span>arm?
+      <span style="color:#ff79c6">if</span> Hardware<span style="color:#ff79c6">::</span>CPU<span style="color:#ff79c6">.</span>is_64_bit?
+        url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_arm64.zip</span><span style="color:#f1fa8c">&#34;</span>
+            sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">97cadca3c3c3f36388a4a601acf878dd356d6275a976bee516798b72bfdbeecf</span><span style="color:#f1fa8c">&#34;</span>
+      <span style="color:#ff79c6">else</span>
+        url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_armv7.zip</span><span style="color:#f1fa8c">&#34;</span>
+        sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">78f31239430eaaec01df783e2a3443753a8126c325292ed8ddb1658ddd2b401d</span><span style="color:#f1fa8c">&#34;</span>
+      <span style="color:#ff79c6">end</span>
+    <span style="color:#ff79c6">end</span>
+  <span style="color:#ff79c6">end</span>
+
+  depends_on <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">git</span><span style="color:#f1fa8c">&#34;</span>
+  depends_on <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">zsh</span><span style="color:#f1fa8c">&#34;</span>
+
+  <span style="color:#ff79c6">def</span> <span style="color:#50fa7b"></span><span style="color:#ff79c6"></span><span style="color:#50fa7b">install</span>
+    bin<span style="color:#ff79c6">.</span>install <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">program</span><span style="color:#f1fa8c">&#34;</span>
+  <span style="color:#ff79c6">end</span>
+<span style="color:#ff79c6">end</span>
+</code></pre></div><p><strong>Important</strong>: Note that GoReleaser does not generate a valid
+homebrew-core formula. The generated formulas are meant to be published as
+<a href="https://docs.brew.sh/Taps.html">homebrew taps</a>, and in their current
+form will not be accepted in any of the official homebrew repositories.</p>
+
+		</div>
+	
+		<div class="Page" id="Scoop">
+			<h1><a href="https://goreleaser.com/scoop/">Scoop</a></h1>
+			<p>After releasing to GitHub or GitLab, GoReleaser can generate and publish a
+<em>Scoop App Manifest</em> into a repository that you have access to.</p>
+<p>The <code>scoop</code> section specifies how the manifest should be created. See
+the commented example bellow:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+scoop:
+  <span style="color:#6272a4"># Template for the url which is determined by the given Token (github or gitlab)</span>
+  <span style="color:#6272a4"># Default for github is &#34;https://github.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/releases/download/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+  <span style="color:#6272a4"># Default for gitlab is &#34;https://gitlab.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/uploads/{{ .ArtifactUploadHash }}/{{ .ArtifactName }}&#34;</span>
+  <span style="color:#6272a4"># Gitea is not supported yet, but the support coming</span>
+  url_template: <span style="color:#f1fa8c">&#34;http://github.mycompany.com/foo/bar/releases/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+
+  <span style="color:#6272a4"># Repository to push the app manifest to.</span>
+  bucket:
+    owner: user
+    name: scoop-bucket
+
+  <span style="color:#6272a4"># Git author used to commit to the repository.</span>
+  <span style="color:#6272a4"># Defaults are shown.</span>
+  commit_author:
+    name: goreleaserbot
+    email: goreleaser@carlosbecker.com
+
+  <span style="color:#6272a4"># Your app&#39;s homepage.</span>
+  <span style="color:#6272a4"># Default is empty.</span>
+  homepage: <span style="color:#f1fa8c">&#34;https://example.com/&#34;</span>
+
+  <span style="color:#6272a4"># Your app&#39;s description.</span>
+  <span style="color:#6272a4"># Default is empty.</span>
+  description: <span style="color:#f1fa8c">&#34;Software to create fast and easy drum rolls.&#34;</span>
+
+  <span style="color:#6272a4"># Your app&#39;s license</span>
+  <span style="color:#6272a4"># Default is empty.</span>
+  license: MIT
+
+  <span style="color:#6272a4"># Persist data between application updates</span>
+  persist:
+  - <span style="color:#f1fa8c">&#34;data&#34;</span>
+  - <span style="color:#f1fa8c">&#34;config.toml&#34;</span>
+</code></pre></div><p>By defining the <code>scoop</code> section, GoReleaser will take care of publishing the
+Scoop app. Assuming that the project name is <code>drumroll</code> and the current tag is
+<code>v1.2.3</code>, the above configuration will generate a <code>drumroll.json</code> manifest in
+the root of the repository specified in the <code>bucket</code> section.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#ff79c6">&#34;version&#34;</span>: <span style="color:#f1fa8c">&#34;1.2.3&#34;</span>,
+  <span style="color:#ff79c6">&#34;architecture&#34;</span>: {
+    <span style="color:#ff79c6">&#34;64bit&#34;</span>: {
+      <span style="color:#ff79c6">&#34;url&#34;</span>:
+        <span style="color:#f1fa8c">&#34;https://github.com/user/drumroll/releases/download/1.2.3/drumroll_1.2.3_windows_amd64.tar.gz&#34;</span>,
+      <span style="color:#ff79c6">&#34;bin&#34;</span>: <span style="color:#f1fa8c">&#34;drumroll.exe&#34;</span>,
+      <span style="color:#ff79c6">&#34;hash&#34;</span>: <span style="color:#f1fa8c">&#34;86920b1f04173ee08773136df31305c0dae2c9927248ac259e02aafd92b6008a&#34;</span>
+    },
+    <span style="color:#ff79c6">&#34;32bit&#34;</span>: {
+      <span style="color:#ff79c6">&#34;url&#34;</span>:
+        <span style="color:#f1fa8c">&#34;https://github.com/user/drumroll/releases/download/1.2.3/drumroll_1.2.3_windows_386.tar.gz&#34;</span>,
+      <span style="color:#ff79c6">&#34;bin&#34;</span>: <span style="color:#f1fa8c">&#34;drumroll.exe&#34;</span>,
+      <span style="color:#ff79c6">&#34;hash&#34;</span>: <span style="color:#f1fa8c">&#34;283faa524ef41987e51c8786c61bb56658a489f63512b32139d222b3ee1d18e6&#34;</span>
+    }
+  },
+  <span style="color:#ff79c6">&#34;homepage&#34;</span>: <span style="color:#f1fa8c">&#34;https://example.com/&#34;</span>
+}
+</code></pre></div><p>Your users can then install your app by doing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">scoop bucket add app https://github.com/org/repo.git
+scoop install app
+</code></pre></div><p>You can check the
+<a href="https://github.com/lukesampson/scoop/wiki">Scoop documentation</a> for more
+details.</p>
+
+		</div>
+	
+		<div class="Page" id="Release">
+			<h1><a href="https://goreleaser.com/release/">Release</a></h1>
+			<p>GoReleaser will create a GitHub/GitLab release with the current tag, upload all
+the artifacts and generate the changelog based on the new commits since the
+previous tag.</p>
+<p>Let's see what can be customized in the <code>release</code> section for GitHub:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+release:
+  <span style="color:#6272a4"># Repo in which the release will be created.</span>
+  <span style="color:#6272a4"># Default is extracted from the origin remote URL.</span>
+  <span style="color:#6272a4"># Note: it can only be one: either github or gitlab or gitea</span>
+  github:
+    owner: user
+    name: repo
+
+  <span style="color:#6272a4"># IDs of the archives to use.</span>
+  <span style="color:#6272a4"># Defaults to all.</span>
+  ids:
+    - foo
+    - bar
+
+  <span style="color:#6272a4"># If set to true, will not auto-publish the release.</span>
+  <span style="color:#6272a4"># Default is false.</span>
+  draft: <span style="color:#ff79c6">true</span>
+
+  <span style="color:#6272a4"># If set to auto, will mark the release as not ready for production</span>
+  <span style="color:#6272a4"># in case there is an indicator for this in the tag e.g. v1.0.0-rc1</span>
+  <span style="color:#6272a4"># If set to true, will mark the release as not ready for production.</span>
+  <span style="color:#6272a4"># Default is false.</span>
+  prerelease: auto
+
+  <span style="color:#6272a4"># You can change the name of the GitHub release.</span>
+  <span style="color:#6272a4"># Default is `{{.Tag}}`</span>
+  name_template: <span style="color:#f1fa8c">&#34;{{.ProjectName}}-v{{.Version}} {{.Env.USER}}&#34;</span>
+
+  <span style="color:#6272a4"># You can disable this pipe in order to not upload any artifacts to</span>
+  <span style="color:#6272a4"># GitHub.</span>
+  <span style="color:#6272a4"># Defaults to false.</span>
+  disable: <span style="color:#ff79c6">true</span>
+</code></pre></div><p>Second, let's see what can be customized in the <code>release</code> section for GitLab.
+<strong>Note</strong> that only GitLab <code>v11.7+</code> are supported for releases:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+release:
+  <span style="color:#6272a4"># Same as for github</span>
+  <span style="color:#6272a4"># Note: it can only be one: either github or gitlab or gitea</span>
+  gitlab:
+    owner: user
+    name: repo
+
+  <span style="color:#6272a4"># IDs of the archives to use.</span>
+  <span style="color:#6272a4"># Defaults to all.</span>
+  ids:
+    - foo
+    - bar
+
+  <span style="color:#6272a4"># You can change the name of the GitLab release.</span>
+  <span style="color:#6272a4"># Default is `{{.Tag}}`</span>
+  name_template: <span style="color:#f1fa8c">&#34;{{.ProjectName}}-v{{.Version}} {{.Env.USER}}&#34;</span>
+
+  <span style="color:#6272a4"># You can disable this pipe in order to not upload any artifacts to</span>
+  <span style="color:#6272a4"># GitLab.</span>
+  <span style="color:#6272a4"># Defaults to false.</span>
+  disable: <span style="color:#ff79c6">true</span>
+</code></pre></div><p>You can also configure the <code>release</code> section to upload to a <a href="https://gitea.io">Gitea</a> instance:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+release:
+  <span style="color:#6272a4"># Same as for github and gitlab</span>
+  <span style="color:#6272a4"># Note: it can only be one: either github or gitlab or gitea</span>
+  gitea:
+    owner: user
+    name: repo
+
+  <span style="color:#6272a4"># IDs of the archives to use.</span>
+  <span style="color:#6272a4"># Defaults to all.</span>
+  ids:
+    - foo
+    - bar
+
+  <span style="color:#6272a4"># You can change the name of the Gitea release.</span>
+  <span style="color:#6272a4"># Default is `{{.Tag}}`</span>
+  name_template: <span style="color:#f1fa8c">&#34;{{.ProjectName}}-v{{.Version}} {{.Env.USER}}&#34;</span>
+
+  <span style="color:#6272a4"># You can disable this pipe in order to not upload any artifacts to</span>
+  <span style="color:#6272a4"># Gitea.</span>
+  <span style="color:#6272a4"># Defaults to false.</span>
+  disable: <span style="color:#ff79c6">true</span>
+</code></pre></div><p>To enable uploading <code>tar.gz</code> and <code>checksums.txt</code> files you need to add the following to your Gitea config in <code>app.ini</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#ff79c6">[attachment]</span>
+<span style="color:#50fa7b">ALLOWED_TYPES</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">application/gzip|application/x-gzip|application/x-gtar|application/x-tgz|application/x-compressed-tar|text/plain</span>
+</code></pre></div><blockquote>
+<p>Gitea versions earlier than 1.9.2 do not support uploading <code>checksums.txt</code> files because of a <a href="https://github.com/go-gitea/gitea/issues/7882">bug</a>
+so you will have to enable all file types with <code>*/*</code>.</p>
+</blockquote>
+<p><strong>Note</strong>: <code>draft</code> and <code>prerelease</code> are only supported by GitHub and Gitea.</p>
+<blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<h2 id="customize-the-changelog">Customize the changelog</h2>
+<p>You can customize how the changelog is generated using the
+<code>changelog</code> section in the config file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+changelog:
+  <span style="color:#6272a4"># set it to true if you wish to skip the changelog generation</span>
+  skip: <span style="color:#ff79c6">true</span>
+  <span style="color:#6272a4"># could either be asc, desc or empty</span>
+  <span style="color:#6272a4"># Default is empty</span>
+  sort: asc
+  filters:
+    <span style="color:#6272a4"># commit messages matching the regexp listed here will be removed from</span>
+    <span style="color:#6272a4"># the changelog</span>
+    <span style="color:#6272a4"># Default is empty</span>
+    exclude:
+      - <span style="color:#f1fa8c">&#39;^docs:&#39;</span>
+      - typo
+      - (?i)foo
+</code></pre></div><h2 id="custom-release-notes">Custom release notes</h2>
+<p>You can specify a file containing your custom release notes, and
+pass it with the <code>--release-notes=FILE</code> flag.
+GoReleaser will then skip its own release notes generation,
+using the contents of your file instead.
+You can use Markdown to format the contents of your file.</p>
+<p>On Unix systems you can also generate the release notes in-line by using
+<a href="https://en.wikipedia.org/wiki/Process_substitution">process substitution</a>.
+To list all commits since the last tag, but skip ones starting with <code>Merge</code> or
+<code>docs</code>, you could run this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ goreleaser --release-notes &lt;<span style="color:#ff79c6">(</span>some_changelog_generator<span style="color:#ff79c6">)</span>
+</code></pre></div><p>Some changelog generators you can use:</p>
+<ul>
+<li><a href="https://github.com/buchanae/github-release-notes">buchanae/github-release-notes</a></li>
+</ul>
+<blockquote>
+<p><strong>Important</strong>: If you create the release before running GoReleaser, and the
+said release has some text in its body, GoReleaser will not override it with
+it's release notes.</p>
+</blockquote>
+
+		</div>
+	
+		<div class="Page" id="Blob">
+			<h1><a href="https://goreleaser.com/blob/">Blob</a></h1>
+			<h2 id="customization">Customization</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+blobs:
+  <span style="color:#6272a4"># You can have multiple blob configs</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Template for the cloud provider name</span>
+    <span style="color:#6272a4"># s3 for AWS S3 Storage</span>
+    <span style="color:#6272a4"># azblob for Azure Blob Storage</span>
+    <span style="color:#6272a4"># gs for Google Cloud Storage</span>
+    provider: azblob
+
+    <span style="color:#6272a4"># Set a custom endpoint, useful if you&#39;re using a minio backend or</span>
+    <span style="color:#6272a4"># other s3-compatible backends.</span>
+    <span style="color:#6272a4"># Implies s3ForcePathStyle and requires provider to be `s3`</span>
+    endpoint: https://minio.foo.bar
+
+    <span style="color:#6272a4"># Sets the bucket region.</span>
+    <span style="color:#6272a4"># Requires provider to be `s3`</span>
+    <span style="color:#6272a4"># Defaults to empty.</span>
+    region: us-west<span style="color:#bd93f9">-1</span>
+
+    <span style="color:#6272a4"># Disables SSL</span>
+    <span style="color:#6272a4"># Requires provider to be `s3`</span>
+    <span style="color:#6272a4"># Defaults to false</span>
+    disableSSL: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Template for the bucket name</span>
+    bucket: goreleaser-bucket
+
+    <span style="color:#6272a4"># IDs of the artifacts you want to upload.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># Template for the path/name inside the bucket.</span>
+    <span style="color:#6272a4"># Default is `{{ .ProjectName }}/{{ .Tag }}`</span>
+    folder: <span style="color:#f1fa8c">&#34;foo/bar/{{.Version}}&#34;</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">provider: gs</span>
+    bucket: goreleaser-bucket
+    folder: <span style="color:#f1fa8c">&#34;foo/bar/{{.Version}}&#34;</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">provider: s3</span>
+    bucket: goreleaser-bucket
+    folder: <span style="color:#f1fa8c">&#34;foo/bar/{{.Version}}&#34;</span>
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>Goreleaser's blob pipe authentication varies depending upon the blob provider as mentioned below:</p>
+<h3 id="s3-provider">S3 Provider</h3>
+<p>S3 provider support AWS <a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials">default credential provider</a> chain in the following order:</p>
+<ul>
+<li>
+<p>Environment variables.</p>
+</li>
+<li>
+<p>Shared credentials file.</p>
+</li>
+<li>
+<p>If your application is running on an Amazon EC2 instance, IAM role for Amazon EC2.</p>
+</li>
+</ul>
+<h3 id="azure-blob-provider">Azure Blob Provider</h3>
+<p>Currently it supports authentication only with <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-azure-cli#set-default-azure-storage-account-environment-variables">environment variables</a>:</p>
+<ul>
+<li>AZURE_STORAGE_ACCOUNT</li>
+<li>AZURE_STORAGE_KEY or AZURE_STORAGE_SAS_TOKEN</li>
+</ul>
+<h3 id="gcs-providerhttpscloudgooglecomdocsauthenticationproduction"><a href="https://cloud.google.com/docs/authentication/production">GCS Provider</a></h3>
+<p>GCS provider uses <a href="https://cloud.google.com/docs/authentication/production">Application Default Credentials</a> in the following order:</p>
+<ul>
+<li>Environment Variable (GOOGLE_APPLICATION_CREDENTIALS)</li>
+<li>Default Service Account from the compute instance(Compute Engine, Kubernetes Engine, Cloud function etc).</li>
+</ul>
+
+		</div>
+	
+		<div class="Page" id="S3">
+			<h1><a href="https://goreleaser.com/s3/">S3</a></h1>
+			<p>Since <a href="https://github.com/goreleaser/goreleaser/releases/tag/v0.74.0">v0.74.0</a>,
+GoReleaser supports pushing artifacts to Amazon S3 and other API-compatible
+object storages (<a href="https://www.minio.io">minio</a> for example).</p>
+<p>Right now, the implementation is quite simple and probably won't cover all
+use cases. If you need one of such use cases, please open an issue/pull request.</p>
+<p>Here is what you can customize:</p>
+<h2 id="customization">Customization</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+s3:
+  <span style="color:#6272a4"># You can have multiple s3 configs</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Template for the bucket name(without the s3:// prefix)</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    bucket: my-bucket
+
+    <span style="color:#6272a4"># IDs of the artifacts you want to upload.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># AWS Region to use.</span>
+    <span style="color:#6272a4"># Defaults is us-east-1</span>
+    region: us-east<span style="color:#bd93f9">-1</span>
+
+    <span style="color:#6272a4"># Template for the path/name inside the bucket.</span>
+    <span style="color:#6272a4"># Default is `{{ .ProjectName }}/{{ .Tag }}`</span>
+    folder: <span style="color:#f1fa8c">&#34;foo/bar/{{.Version}}&#34;</span>
+
+    <span style="color:#6272a4"># Set a custom profile to use for this s3 config. If you have multiple</span>
+    <span style="color:#6272a4"># profiles setup in you ~/.aws config, this shall help defining which</span>
+    <span style="color:#6272a4"># profile to use in which s3 bucket.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    profile: my-profile
+
+    <span style="color:#6272a4"># Endpoint allows you to set a custom endpoint, which is useful if you</span>
+    <span style="color:#6272a4"># want to push your artifacts to a minio server for example.</span>
+    <span style="color:#6272a4"># Default is AWS S3 URL.</span>
+    endpoint: <span style="color:#f1fa8c">&#34;http://minio.foo.com&#34;</span>
+
+    <span style="color:#6272a4"># Sets the ACL of the object using the specified canned ACL.</span>
+    <span style="color:#6272a4"># Default is private.</span>
+    acl: public-read
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.
+Learn more about the <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTacl.html">acl</a>.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>GoReleaser will authenticate using the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">same methods defined by aws-cli</a>.
+You can read the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">docs</a> to find out more about it.</p>
+<p>Currently it supports authentication with:</p>
+<ul>
+<li>An <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/credentials/#EnvProvider">EnvProvider</a> which retrieves credentials from the environment
+variables of the running process. Environment credentials never expire.
+Environment variables used:
+<ul>
+<li>Access Key ID:     <code>AWS_ACCESS_KEY_ID</code> or <code>AWS_ACCESS_KEY</code></li>
+<li>Secret Access Key: <code>AWS_SECRET_ACCESS_KEY</code> or <code>AWS_SECRET_KEY</code></li>
+</ul>
+</li>
+<li>A <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/credentials/#SharedCredentialsProvider">SharedCredentialsProvider</a> which retrieves
+credentials from the current user's home directory, and keeps track if those
+credentials are expired. Profile ini file example: <code>$HOME/.aws/credentials</code></li>
+<li>A AssumeRoleTokenProvider with enabled SharedConfigState which uses MFA
+prompting for token code on stdin. Go to <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/session/">session doc</a> for more
+details.</li>
+</ul>
+<p>You can also set different profile names for each S3 config, so you may be able
+to push to buckets in different accounts, for example.</p>
+
+		</div>
+	
+		<div class="Page" id="Artifactory">
+			<h1><a href="https://goreleaser.com/artifactory/">Artifactory</a></h1>
+			<p>Since <a href="https://github.com/goreleaser/goreleaser/releases/tag/v0.38.0">v0.38.0</a>,
+GoReleaser supports building and pushing artifacts into Artifactory.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>You can declare multiple Artifactory instances.
+All binaries generated by your <code>builds</code> section will be pushed to
+each configured Artifactory.</p>
+<p>If you have only one Artifactory instance,
+the configuration is as easy as adding the
+upload target and a username to your <code>.goreleaser.yml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">artifactories:
+  - name: production
+    target: http://&lt;Your-Instance&gt;:<span style="color:#bd93f9">8081</span>/artifactory/example-repo-local/{{ .ProjectName }}/{{ .Version }}/
+    username: goreleaser
+</code></pre></div><p>Prerequisites:</p>
+<ul>
+<li>A running Artifactory instances</li>
+<li>A user + password / API key with grants to upload an artifact</li>
+</ul>
+<h3 id="target">Target</h3>
+<p>The <code>target</code> is the URL to upload the artifacts to (<em>without</em> the name of the artifact).</p>
+<p>An example configuration for <code>goreleaser</code> in upload mode <code>binary</code> with the target can look like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- mode: binary
+  target: <span style="color:#f1fa8c">&#39;http://artifacts.company.com:8081/artifactory/example-repo-local/{{ .ProjectName }}/{{ .Version }}/{{ .Os }}/{{ .Arch }}{{ if .Arm }}{{ .Arm }}{{ end }}&#39;</span>
+</code></pre></div><p>and will result in a final deployment like <code>http://artifacts.company.com:8081/artifactory/example-repo-local/goreleaser/1.0.0/Darwin/x86_64/goreleaser</code>.</p>
+<p>Supported variables:</p>
+<ul>
+<li>Version</li>
+<li>Tag</li>
+<li>ProjectName</li>
+<li>Os</li>
+<li>Arch</li>
+<li>Arm</li>
+</ul>
+<blockquote>
+<p><strong>Attention</strong>: Variables <em>Os</em>, <em>Arch</em> and <em>Arm</em> are only supported in upload
+mode <code>binary</code>.</p>
+</blockquote>
+<h3 id="username">Username</h3>
+<p>Your configured username needs to be authenticated against your Artifactory.</p>
+<p>You can have the username set in the configuration file as shown above
+or you can have it read from an environment variable.
+The configured name of your Artifactory instance will be used to build
+the environment variable name.
+This way we support auth for multiple instances.
+This also means that the <code>name</code> per configured instance needs to be unique
+per goreleaser configuration.</p>
+<p>The name of the environment variable will be <code>ARTIFACTORY_NAME_USERNAME</code>.
+If your instance is named <code>production</code>, you can store the username in the
+environment variable <code>ARTIFACTORY_PRODUCTION_USERNAME</code>.
+The name will be transformed to uppercase.</p>
+<p>If a configured username is found in the configuration file, then the
+environment variable is not used at all.</p>
+<h3 id="password--api-key">Password / API Key</h3>
+<p>The password or API key will be stored in a environment variable.
+The configured name of your Artifactory instance will be used.
+With this way we support auth for multiple instances.
+This also means that the <code>name</code> per configured instance needs to be unique
+per goreleaser configuration.</p>
+<p>The name of the environment variable will be <code>ARTIFACTORY_NAME_SECRET</code>.
+If your instance is named <code>production</code>, you need to store the secret in the
+environment variable <code>ARTIFACTORY_PRODUCTION_SECRET</code>.
+The name will be transformed to uppercase.</p>
+<h3 id="server-authentication">Server authentication</h3>
+<p>You can authenticate your Artifactory TLS server adding a trusted X.509
+certificate chain in your configuration.</p>
+<p>The trusted certificate chain will be used to validate the server certificates.</p>
+<p>You can set the trusted certificate chain using the <code>trusted_certificates</code>
+setting the artifactory section with PEM encoded certificates on a YAML literal
+block like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">puts:
+  - name: <span style="color:#f1fa8c">&#34;some artifactory server with a private TLS certificate&#34;</span>
+    <span style="color:#6272a4">#...(other settings)...</span>
+    trusted_certificates: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE----<span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE-----
+</code></pre></div><h2 id="customization">Customization</h2>
+<p>Of course, you can customize a lot of things:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+artifactories:
+  <span style="color:#6272a4"># You can have multiple Artifactory instances.</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Unique name of your artifactory instance. Used to identify the instance</span>
+    name: production
+    <span style="color:#6272a4"># Upload mode. Valid options are `binary` and `archive`.</span>
+    <span style="color:#6272a4"># If mode is `archive`, variables _Os_, _Arch_ and _Arm_ for target name are not supported.</span>
+    <span style="color:#6272a4"># In that case these variables are empty.</span>
+    <span style="color:#6272a4"># Default is `archive`.</span>
+    mode: archive
+    <span style="color:#6272a4"># URL of your Artifactory instance + path to deploy to</span>
+    target: http://artifacts.company.com:<span style="color:#bd93f9">8081</span>/artifactory/example-repo-local/{{ .ProjectName }}/{{ .Version }}/
+    <span style="color:#6272a4"># User that will be used for the deployment</span>
+    username: deployuser
+    <span style="color:#6272a4"># Upload checksums (defaults to false)</span>
+    checksum: <span style="color:#ff79c6">true</span>
+    <span style="color:#6272a4"># Upload signatures (defaults to false)</span>
+    signature: <span style="color:#ff79c6">true</span>
+    <span style="color:#6272a4"># Certificate chain used to validate server certificates</span>
+    trusted_certificates: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE-----
+</code></pre></div><p>These settings should allow you to push your artifacts into multiple Artifactories.</p>
+
+		</div>
+	
+		<div class="Page" id="Bintray">
+			<h1><a href="https://goreleaser.com/bintray/">Bintray</a></h1>
+			<h2 id="how-it-works">How it works</h2>
+<p>Uploading to Bintray is a simple case of <a href="https://goreleaser.com/customization/#HTTP%20Put">using HTTP PUT</a>.</p>
+<h3 id="pre-and-post-requisites">Pre and post requisites:</h3>
+<ul>
+<li>Create a user and/or an org in Bintray</li>
+<li>Create a generic repository in Bintray</li>
+<li>Create a package with a name matching your <code>ProjectName</code></li>
+<li>After publishing, dont&rsquo; forget to publish the uploaded files (either via UI or <a href="https://bintray.com/docs/api/#_publish_discard_uploaded_content">REST API</a>)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">puts:
+  - name: bintray
+    target: https://api.bintray.com/content/user.or.org.name/generic.repo.name/{{ .ProjectName }}/{{ .Version }}/
+    username: goreleaser
+</code></pre></div><p>Please see <a href="https://goreleaser.com/customization/#HTTP%20Put">HTTP Put</a> for more details.</p>
+
+		</div>
+	
+		<div class="Page" id="HTTP Upload">
+			<h1><a href="https://goreleaser.com/upload/">HTTP Upload</a></h1>
+			<p>GoReleaser supports building and pushing artifacts to HTTP servers using simple
+HTTP requests.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>You can declare multiple <code>uploads</code> instances. All binaries generated by your
+<code>builds</code> section will be pushed to each configured upload.</p>
+<p>If you have only one <code>uploads</code> instance, the configuration is as easy as adding
+the upload target and a username to your <code>.goreleaser.yml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">uploads:
+  - name: production
+    target: http://some.server/some/path/example-repo-local/{{ .ProjectName }}/{{ .Version }}/
+    username: goreleaser
+</code></pre></div><p>Prerequisites:</p>
+<ul>
+<li>An HTTP server accepting HTTP requests</li>
+<li>A user + password with grants to upload an artifact using HTTP requests (if the server requires it)</li>
+</ul>
+<h3 id="target">Target</h3>
+<p>The <code>target</code> is the URL to upload the artifacts to (<em>without</em> the name of the artifact).</p>
+<p>An example configuration for <code>goreleaser</code> in upload mode <code>binary</code> with the target can look like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- mode: binary
+  target: <span style="color:#f1fa8c">&#39;http://some.server/some/path/example-repo-local/{{ .ProjectName }}/{{ .Version }}/{{ .Os }}/{{ .Arch }}{{ if .Arm }}{{ .Arm }}{{ end }}&#39;</span>
+</code></pre></div><p>and will result in an HTTP PUT request sent to <code>http://some.server/some/path/example-repo-local/goreleaser/1.0.0/Darwin/x86_64/goreleaser</code>.</p>
+<p>Supported variables:</p>
+<ul>
+<li>Version</li>
+<li>Tag</li>
+<li>ProjectName</li>
+<li>Os</li>
+<li>Arch</li>
+<li>Arm</li>
+</ul>
+<blockquote>
+<p><strong>Warning</strong>: Variables <code>Os</code>, <code>Arch</code> and <code>Arm</code> are only supported in upload mode <code>binary</code>.</p>
+</blockquote>
+<h3 id="username">Username</h3>
+<p>Your configured username needs to be valid against your HTTP server.</p>
+<p>You can have the username set in the configuration file as shown above
+or you can have it read from and environment variable.
+The configured name of your HTTP server will be used to build the environment
+variable name.
+This way we support auth for multiple instances.
+This also means that the <code>name</code> per configured instance needs to be unique
+per goreleaser configuration.</p>
+<p>The name of the environment variable will be <code>UPLOAD_NAME_USERNAME</code>.
+If your instance is named <code>production</code>, you can store the username in the
+environment variable <code>UPLOAD_PRODUCTION_USERNAME</code>.
+The name will be transformed to uppercase.</p>
+<p>If a configured username is found in the configuration file, then the
+environment variable is not used at all.</p>
+<h3 id="password">Password</h3>
+<p>The password will be stored in a environment variable.
+The configured name of your HTTP server will be used.
+This way we support auth for multiple instances.
+This also means that the <code>name</code> per configured instance needs to be unique
+per goreleaser configuration.</p>
+<p>The name of the environment variable will be <code>UPLOAD_NAME_SECRET</code>.
+If your instance is named <code>production</code>, you need to store the secret in the
+environment variable <code>UPLOAD_PRODUCTION_SECRET</code>.
+The name will be transformed to uppercase.</p>
+<h3 id="server-authentication">Server authentication</h3>
+<p>You can authenticate your TLS server adding a trusted X.509 certificate chain
+in your upload configuration.</p>
+<p>The trusted certificate chain will be used to validate the server certificates.</p>
+<p>You can set the trusted certificate chain using the <code>trusted_certificates</code>
+setting the upload section with PEM encoded certificates on a YAML literal block
+like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">uploads:
+  - name: <span style="color:#f1fa8c">&#34;some HTTP/TLS server&#34;</span>
+    <span style="color:#6272a4">#...(other settings)...</span>
+    trusted_certificates: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE----<span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE-----
+</code></pre></div><h2 id="customization">Customization</h2>
+<p>Of course, you can customize a lot of things:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+uploads:
+  <span style="color:#6272a4"># You can have multiple upload instances.</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Unique name of your upload instance. Used to identify the instance.</span>
+    name: production
+
+    <span style="color:#6272a4"># HTTP method to use.</span>
+    <span style="color:#6272a4"># Default: PUT</span>
+    method: POST
+
+    <span style="color:#6272a4"># IDs of the artifacts you want to upload.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># Upload mode. Valid options are `binary` and `archive`.</span>
+    <span style="color:#6272a4"># If mode is `archive`, variables _Os_, _Arch_ and _Arm_ for target name are not supported.</span>
+    <span style="color:#6272a4"># In that case these variables are empty.</span>
+    <span style="color:#6272a4"># Default is `archive`.</span>
+    mode: archive
+
+    <span style="color:#6272a4"># URL to be used as target of the HTTP request</span>
+    target: https://some.server/some/path/example-repo-local/{{ .ProjectName }}/{{ .Version }}/
+
+    <span style="color:#6272a4"># User that will be used for the deployment</span>
+    username: deployuser
+
+    <span style="color:#6272a4"># An optional header you can use to tell GoReleaser to pass the artifact&#39;s</span>
+    <span style="color:#6272a4"># SHA256 checksum within the upload request.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    checksum_header: -X-SHA256-Sum
+
+    <span style="color:#6272a4"># Upload checksums (defaults to false)</span>
+    checksum: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Upload signatures (defaults to false)</span>
+    signature: <span style="color:#ff79c6">true</span>
+
+   <span style="color:#6272a4"># Certificate chain used to validate server certificates</span>
+    trusted_certificates: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">-----BEGIN CERTIFICATE-----</span>
+      MIIDrjCCApagAwIBAgIIShr2zchZo+8wDQYJKoZIhvcNAQENBQAwNTEXMBUGA1UE
+      ...(edited content)...
+      TyzMJasj5BPZrmKjJb6O/tOtEIJ66xPSBTxPShkEYHnB7A==
+      -----END CERTIFICATE-----
+</code></pre></div><p>These settings should allow you to push your artifacts into multiple HTTP servers.</p>
+
+		</div>
+	
+		<div class="Page" id="Docker">
+			<h1><a href="https://goreleaser.com/docker/">Docker</a></h1>
+			<p>Since <a href="https://github.com/goreleaser/goreleaser/releases/tag/v0.31.0">v0.31.0</a>,
+GoReleaser supports building and pushing Docker images.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>You can declare multiple Docker images. They will be matched against
+the binaries generated by your <code>builds</code> section.</p>
+<p>If you have only one <code>build</code> setup,
+the configuration is as easy as adding the
+name of your image to your <code>.goreleaser.yml</code> file:</p>
+<p>The docker image declaration supports templating. Learn more about the <a href="/templates">name template engine</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">dockers:
+  - image_templates:
+    - user/repo
+</code></pre></div><p>You also need to create a <code>Dockerfile</code> in your project's root folder:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> scratch</span>
+<span style="color:#ff79c6">COPY</span> mybin /
+<span style="color:#ff79c6">ENTRYPOINT</span> [<span style="color:#f1fa8c">&#34;/mybin&#34;</span>]
+</code></pre></div><p>This configuration will build and push a Docker image named <code>user/repo:tagname</code>.</p>
+<blockquote>
+<p><strong>Attention</strong>: Note that were are not building any go files in the docker
+build phase, we are merely copying the binary to a <code>scratch</code> image and
+setting up the entrypoint.</p>
+</blockquote>
+<h2 id="customization">Customization</h2>
+<p>Of course, you can customize a lot of things:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+dockers:
+  <span style="color:#6272a4"># You can have multiple Docker images.</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># GOOS of the built binary that should be used.</span>
+    goos: linux
+
+    <span style="color:#6272a4"># GOARCH of the built binary that should be used.</span>
+    goarch: amd64
+
+    <span style="color:#6272a4"># GOARM of the built binary that should be used.</span>
+    goarm: <span style="color:#f1fa8c">&#39;&#39;</span>
+
+    <span style="color:#6272a4"># Name templates of the built binaries that should be used.</span>
+    binaries:
+    - mybinary
+
+    <span style="color:#6272a4"># Build IDs to gather the binaries from.</span>
+    builds:
+    - mybuild
+
+    <span style="color:#6272a4"># Templates of the Docker image names.</span>
+    image_templates:
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:latest&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:{{ .Tag }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:{{ .Tag }}-{{ .Env.GO_VERSION }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:v{{ .Major }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;gcr.io/myuser/myimage:latest&#34;</span>
+
+    <span style="color:#6272a4"># Skips the docker push. Could be useful if you also do draft releases.</span>
+    <span style="color:#6272a4"># If set to auto, the release will not be pushed to the docker repository</span>
+    <span style="color:#6272a4"># in case there is an indicator for prerelease in the tag e.g. v1.0.0-rc1</span>
+    <span style="color:#6272a4"># Defaults to false.</span>
+    skip_push: <span style="color:#ff79c6">false</span>
+
+    <span style="color:#6272a4"># Path to the Dockerfile (from the project root).</span>
+    dockerfile: Dockerfile
+
+    <span style="color:#6272a4"># Template of the docker build flags.</span>
+    build_flag_templates:
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.schema-version=1.0&#34;</span>
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.version={{.Version}}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.name={{.ProjectName}}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;--build-arg=FOO={{.Env.Bar}}&#34;</span>
+
+    <span style="color:#6272a4"># If your Dockerfile copies files other than the binary itself,</span>
+    <span style="color:#6272a4"># you should list them here as well.</span>
+    <span style="color:#6272a4"># Note that goreleaser will create the same structure inside the temporary</span>
+    <span style="color:#6272a4"># folder, so if you add `foo/bar.json` here, on your Dockerfile you can</span>
+    <span style="color:#6272a4"># `COPY foo/bar.json /whatever.json`.</span>
+    <span style="color:#6272a4"># Also note that the paths here are relative to the folder in which</span>
+    <span style="color:#6272a4"># goreleaser is being run.</span>
+    <span style="color:#6272a4"># This field does not support wildcards, you can add an entire folder here</span>
+    <span style="color:#6272a4"># and use wildcards when you `COPY`/`ADD` in your Dockerfile.</span>
+    extra_files:
+    - config.yml
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>These settings should allow you to generate multiple Docker images,
+for example, using multiple <code>FROM</code> statements,
+as well as generate one image for each binary in your project.</p>
+<h2 id="generic-image-names">Generic Image Names</h2>
+<p>Some users might want to keep their image name as generic as possible.
+That can be accomplished simply by adding template language in the definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+project: foo
+dockers:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">binaries:</span>
+    - mybinary
+    image_templates:
+    - <span style="color:#f1fa8c">&#34;myuser/{{.ProjectName}}&#34;</span>
+</code></pre></div><p>This will build and public the following images:</p>
+<ul>
+<li><code>myuser/foo</code></li>
+</ul>
+<blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<h2 id="keeping-docker-images-updated-for-current-major">Keeping docker images updated for current major</h2>
+<p>Some users might want to when version to push docker tags <code>:v1</code>, <code>:v1.6</code>,
+<code>:v1.6.4</code> and <code>:latest</code> when <code>v1.6.4</code> (for example) is built. That can be
+accomplished by using multiple <code>image_templates</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+dockers:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">binaries:</span>
+    - mybinary
+    image_templates:
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:{{ .Tag }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:v{{ .Major }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:v{{ .Major }}.{{ .Minor }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;myuser/myimage:latest&#34;</span>
+</code></pre></div><p>This will build and publish the following images:</p>
+<ul>
+<li><code>myuser/myimage:v1.6.4</code></li>
+<li><code>myuser/myimage:v1</code></li>
+<li><code>myuser/myimage:v1.6</code></li>
+<li><code>myuser/myimage:latest</code></li>
+</ul>
+<p>With these settings you can hopefully push several different docker images
+with multiple tags.</p>
+<blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<h2 id="publishing-to-multiple-docker-registries">Publishing to multiple docker registries</h2>
+<p>Some users might want to push images to multiple docker registries. That can be
+accomplished by using multiple <code>image_templates</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+dockers:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">binaries:</span>
+    - mybinary
+    image_templates:
+    - <span style="color:#f1fa8c">&#34;docker.io/myuser/myimage:{{ .Tag }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;docker.io/myuser/myimage:latest&#34;</span>
+    - <span style="color:#f1fa8c">&#34;gcr.io/myuser/myimage:{{ .Tag }}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;gcr.io/myuser/myimage:latest&#34;</span>
+</code></pre></div><p>This will build and publish the following images to <code>docker.io</code> and <code>gcr.io</code>:</p>
+<ul>
+<li><code>myuser/myimage:v1.6.4</code></li>
+<li><code>myuser/myimage:latest</code></li>
+</ul>
+<h2 id="applying-docker-build-flags">Applying docker build flags</h2>
+<p>Build flags can be applied using <code>build_flag_templates</code>. The flags must be
+valid docker build flags.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+dockers:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">binaries:</span>
+    - mybinary
+    image_templates:
+    - <span style="color:#f1fa8c">&#34;myuser/myimage&#34;</span>
+    build_flag_templates:
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.schema-version=1.0&#34;</span>
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.version={{.Version}}&#34;</span>
+    - <span style="color:#f1fa8c">&#34;--label=org.label-schema.name={{.ProjectName}}&#34;</span>
+</code></pre></div><p>This will execute the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t myuser/myimage . <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  --label<span style="color:#ff79c6">=</span>org.label-schema.schema-version<span style="color:#ff79c6">=</span>1.0 <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  --label<span style="color:#ff79c6">=</span>org.label-schema.version<span style="color:#ff79c6">=</span>1.6.4 <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  --label<span style="color:#ff79c6">=</span>org.label-schema.name<span style="color:#ff79c6">=</span>mybinary<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">
+</span></code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+
+		</div>
+	
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

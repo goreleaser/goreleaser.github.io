@@ -1,0 +1,388 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Homebrew &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="GoReleaser">
+		<meta name="description" content="Deliver Go binaries as fast and easily as possible">
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.62.0" />
+		<link rel="icon" href="favicon.ico">
+		<meta name="theme-color" content="#000">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="black">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@goreleaser">
+		<meta name="twitter:creator" content="@goreleaser">
+		<meta name="twitter:title" content="GoReleaser">
+		<meta name="twitter:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="twitter:image" content="https://goreleaser.com/card.png">
+		<meta name="og:title" content="GoReleaser">
+		<meta name="og:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="og:url" content="https://goreleaser.com/">
+		<meta name="og:image" content="https://goreleaser.com/card.png">
+		<meta property="og:type" content="website" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://github.com/goreleaser.png" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/install/">Install</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/actions/">GitHub Actions</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contributing/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials and posts</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>Homebrew</h1>
+		<p>After releasing to GitHub or GitLab, GoReleaser can generate and publish a <em>homebrew-tap</em>
+recipe into a repository that you have access to.</p>
+<p>The <code>brew</code> section specifies how the formula should be created.
+You can check the
+<a href="https://github.com/Homebrew/brew/blob/master/docs/How-to-Create-and-Maintain-a-Tap.md">Homebrew documentation</a>
+and the
+<a href="https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md">formula cookbook</a>
+for more details.</p>
+<p><strong>Note</strong>: If you have multiple arm 32-bit versions in each <code>build</code> section, and
+you do not specify any <code>ids</code> in the brew section (default to all artifacts), then goreleaser will fail.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+brews:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Name template of the recipe</span>
+    <span style="color:#6272a4"># Default to project name</span>
+    name: myproject
+
+    <span style="color:#6272a4"># IDs of the archives to use.</span>
+    <span style="color:#6272a4"># Defaults to all.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># GOARM to specify which 32-bit arm version to use if there are multiple versions</span>
+    <span style="color:#6272a4"># from the build section. Brew formulas support atm only one 32-bit version.</span>
+    <span style="color:#6272a4"># Default is 6 for all artifacts or each id if there a multiple versions.</span>
+    goarm: <span style="color:#bd93f9">6</span>
+
+
+    <span style="color:#6272a4"># NOTE: make sure the url_template, the token and given repo (github or gitlab) owner and name are from the</span>
+    <span style="color:#6272a4"># same kind. We will probably unify this in the next major version like it is done with scoop.</span>
+
+    <span style="color:#6272a4"># Github repository to push the tap to.</span>
+    github:
+      owner: github-user
+      name: homebrew-tap
+
+    <span style="color:#6272a4"># OR Gitlab</span>
+    <span style="color:#6272a4"># gitlab:</span>
+    <span style="color:#6272a4">#   owner: gitlab-user</span>
+    <span style="color:#6272a4">#   name: homebrew-tap</span>
+
+    <span style="color:#6272a4"># Gitea is not supported yet, but the support coming</span>
+
+    <span style="color:#6272a4"># Template for the url which is determined by the given Token (github or gitlab)</span>
+    <span style="color:#6272a4"># Default for github is &#34;https://github.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/releases/download/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+    <span style="color:#6272a4"># Default for gitlab is &#34;https://gitlab.com/&lt;repo_owner&gt;/&lt;repo_name&gt;/uploads/{{ .ArtifactUploadHash }}/{{ .ArtifactName }}&#34;</span>
+    url_template: <span style="color:#f1fa8c">&#34;http://github.mycompany.com/foo/bar/releases/{{ .Tag }}/{{ .ArtifactName }}&#34;</span>
+
+    <span style="color:#6272a4"># Allows you to set a custom download strategy. Note that you&#39;ll need</span>
+    <span style="color:#6272a4"># to implement the strategy and add it to your tap repository.</span>
+    <span style="color:#6272a4"># Example: http://lessthanhero.io/post/homebrew-with-private-repo-releases/</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+
+    <span style="color:#6272a4"># Allows you to add a custom require_relative at the top of the formula template</span>
+    <span style="color:#6272a4"># Default is empty</span>
+    custom_require: custom_download_strategy
+
+    <span style="color:#6272a4"># Git author used to commit to the repository.</span>
+    <span style="color:#6272a4"># Defaults are shown.</span>
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+
+    <span style="color:#6272a4"># Folder inside the repository to put the formula.</span>
+    <span style="color:#6272a4"># Default is the root folder.</span>
+    folder: Formula
+
+    <span style="color:#6272a4"># Caveats for the user of your binary.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    caveats: <span style="color:#f1fa8c">&#34;How to use this binary&#34;</span>
+
+    <span style="color:#6272a4"># Your app&#39;s homepage.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    homepage: <span style="color:#f1fa8c">&#34;https://example.com/&#34;</span>
+
+    <span style="color:#6272a4"># Your app&#39;s description.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    description: <span style="color:#f1fa8c">&#34;Software to create fast and easy drum rolls.&#34;</span>
+
+    <span style="color:#6272a4"># Setting this will prevent goreleaser to actually try to commit the updated</span>
+    <span style="color:#6272a4"># formula - instead, the formula file will be stored on the dist folder only,</span>
+    <span style="color:#6272a4"># leaving the responsibility of publishing it to the user.</span>
+    <span style="color:#6272a4"># If set to auto, the release will not be uploaded to the homebrew tap</span>
+    <span style="color:#6272a4"># in case there is an indicator for prerelease in the tag e.g. v1.0.0-rc1</span>
+    <span style="color:#6272a4"># Default is false.</span>
+    skip_upload: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Custom block for brew.</span>
+    <span style="color:#6272a4"># Can be used to specify alternate downloads for devel or head releases.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    custom_block: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">head &#34;https://github.com/some/package.git&#34;</span>
+      ...
+
+    <span style="color:#6272a4"># Packages your package depends on.</span>
+    dependencies:
+      - git
+      - zsh
+
+    <span style="color:#6272a4"># Packages that conflict with your package.</span>
+    conflicts:
+      - svn
+      - bash
+
+    <span style="color:#6272a4"># Specify for packages that run as a service.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    plist: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+      ...
+
+    <span style="color:#6272a4"># So you can `brew test` your formula.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    test: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">system &#34;#{bin}/program --version&#34;</span>
+      ...
+
+    <span style="color:#6272a4"># Custom install script for brew.</span>
+    <span style="color:#6272a4"># Default is &#39;bin.install &#34;program&#34;&#39;.</span>
+    install: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">     </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">bin.install &#34;program&#34;</span>
+      ...
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>By defining the <code>brew</code> section, GoReleaser will take care of publishing the
+Homebrew tap.
+Assuming that the current tag is <code>v1.2.3</code>, the above configuration will generate a
+<code>program.rb</code> formula in the <code>Formula</code> folder of <code>user/homebrew-tap</code> repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Program</span> <span style="color:#ff79c6">&lt;</span> Formula
+  desc <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">How to use this binary</span><span style="color:#f1fa8c">&#34;</span>
+  homepage <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo</span><span style="color:#f1fa8c">&#34;</span>
+  version <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">v1.2.3</span><span style="color:#f1fa8c">&#34;</span>
+
+  <span style="color:#ff79c6">if</span> os<span style="color:#ff79c6">.</span>Mac?
+    url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_macOs_64bit.zip</span><span style="color:#f1fa8c">&#34;</span>
+    sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">9ee30fc358fae8d248a2d7538957089885da321dca3f09e3296fe2058e7fff74</span><span style="color:#f1fa8c">&#34;</span>
+  <span style="color:#ff79c6">elsif</span> os<span style="color:#ff79c6">.</span>Linux?
+    url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_64bit.zip</span><span style="color:#f1fa8c">&#34;</span>
+    sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">b41bebd25fd7bb1a67dc2cd5ee12c9f67073094567fdf7b3871f05fd74a45fdd</span><span style="color:#f1fa8c">&#34;</span>
+    <span style="color:#ff79c6">if</span> Hardware<span style="color:#ff79c6">::</span>CPU<span style="color:#ff79c6">.</span>arm?
+      <span style="color:#ff79c6">if</span> Hardware<span style="color:#ff79c6">::</span>CPU<span style="color:#ff79c6">.</span>is_64_bit?
+        url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_arm64.zip</span><span style="color:#f1fa8c">&#34;</span>
+            sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">97cadca3c3c3f36388a4a601acf878dd356d6275a976bee516798b72bfdbeecf</span><span style="color:#f1fa8c">&#34;</span>
+      <span style="color:#ff79c6">else</span>
+        url <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">https://github.com/user/repo/releases/download/v1.2.3/program_v1.2.3_Linux_armv7.zip</span><span style="color:#f1fa8c">&#34;</span>
+        sha256 <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">78f31239430eaaec01df783e2a3443753a8126c325292ed8ddb1658ddd2b401d</span><span style="color:#f1fa8c">&#34;</span>
+      <span style="color:#ff79c6">end</span>
+    <span style="color:#ff79c6">end</span>
+  <span style="color:#ff79c6">end</span>
+
+  depends_on <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">git</span><span style="color:#f1fa8c">&#34;</span>
+  depends_on <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">zsh</span><span style="color:#f1fa8c">&#34;</span>
+
+  <span style="color:#ff79c6">def</span> <span style="color:#50fa7b"></span><span style="color:#ff79c6"></span><span style="color:#50fa7b">install</span>
+    bin<span style="color:#ff79c6">.</span>install <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">program</span><span style="color:#f1fa8c">&#34;</span>
+  <span style="color:#ff79c6">end</span>
+<span style="color:#ff79c6">end</span>
+</code></pre></div><p><strong>Important</strong>: Note that GoReleaser does not generate a valid
+homebrew-core formula. The generated formulas are meant to be published as
+<a href="https://docs.brew.sh/Taps.html">homebrew taps</a>, and in their current
+form will not be accepted in any of the official homebrew repositories.</p>
+
+
+		<blockquote>
+			<p>Last updated by Carlos Alexandro Becker on October 20, 2019.
+				<a href="https://github.com/goreleaser/goreleaser/edit/master/www/content/homebrew.md">Improve this page</a>.
+			</p>
+		</blockquote>
+	</div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

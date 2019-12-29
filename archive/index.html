@@ -1,0 +1,321 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Archive &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="GoReleaser">
+		<meta name="description" content="Deliver Go binaries as fast and easily as possible">
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.62.0" />
+		<link rel="icon" href="favicon.ico">
+		<meta name="theme-color" content="#000">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="black">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@goreleaser">
+		<meta name="twitter:creator" content="@goreleaser">
+		<meta name="twitter:title" content="GoReleaser">
+		<meta name="twitter:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="twitter:image" content="https://goreleaser.com/card.png">
+		<meta name="og:title" content="GoReleaser">
+		<meta name="og:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="og:url" content="https://goreleaser.com/">
+		<meta name="og:image" content="https://goreleaser.com/card.png">
+		<meta property="og:type" content="website" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://github.com/goreleaser.png" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/install/">Install</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/actions/">GitHub Actions</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contributing/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials and posts</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>Archive</h1>
+		<p>The binaries built will be archived together with the <code>README</code> and <code>LICENSE</code> files into a
+<code>tar.gz</code> file. In the <code>archives</code> section you can customize the archive name,
+additional files, and format.</p>
+<p>Here is a commented <code>archives</code> section with all fields specified:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#6272a4"># .goreleaser.yml</span>
+archives:
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># ID of this archive.</span>
+    <span style="color:#6272a4"># Defaults to `default`.</span>
+    id: my-archive
+
+    <span style="color:#6272a4"># Builds reference which build instances should be archived in this archive.</span>
+    builds:
+    - default
+
+    <span style="color:#6272a4"># Archive name template.</span>
+    <span style="color:#6272a4"># Defaults:</span>
+    <span style="color:#6272a4"># - if format is `tar.gz`, `gz` or `zip`:</span>
+    <span style="color:#6272a4">#   - `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    <span style="color:#6272a4"># - if format is `binary`:</span>
+    <span style="color:#6272a4">#   - `{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`</span>
+    name_template: <span style="color:#f1fa8c">&#34;{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}&#34;</span>
+
+    <span style="color:#6272a4"># Replacements for GOOS and GOARCH in the archive name.</span>
+    <span style="color:#6272a4"># Keys should be valid GOOSs or GOARCHs.</span>
+    <span style="color:#6272a4"># Values are the respective replacements.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    replacements:
+      amd64: <span style="color:#bd93f9">64</span>-bit
+      <span style="color:#bd93f9">386</span>: <span style="color:#bd93f9">32</span>-bit
+      darwin: macOS
+      linux: Tux
+
+    <span style="color:#6272a4"># Set to true, if you want all files in the archive to be in a single directory.</span>
+    <span style="color:#6272a4"># If set to true and you extract the archive &#39;goreleaser_Linux_arm64.tar.gz&#39;,</span>
+    <span style="color:#6272a4"># you get a folder &#39;goreleaser_Linux_arm64&#39;.</span>
+    <span style="color:#6272a4"># If set to false, all files are extracted separately.</span>
+    <span style="color:#6272a4"># You can also set it to a custom folder name (templating is supported).</span>
+    <span style="color:#6272a4"># Default is false.</span>
+    wrap_in_directory: <span style="color:#ff79c6">true</span>
+
+    <span style="color:#6272a4"># Archive format. Valid options are `tar.gz`, `gz`, `zip` and `binary`.</span>
+    <span style="color:#6272a4"># If format is `binary`, no archives are created and the binaries are instead</span>
+    <span style="color:#6272a4"># uploaded directly.</span>
+    <span style="color:#6272a4"># Default is `tar.gz`.</span>
+    format: zip
+
+    <span style="color:#6272a4"># Can be used to change the archive formats for specific GOOSs.</span>
+    <span style="color:#6272a4"># Most common use case is to archive as zip on Windows.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    format_overrides:
+      - goos: windows
+        format: zip
+
+    <span style="color:#6272a4"># Additional files/globs you want to add to the archive.</span>
+    <span style="color:#6272a4"># Defaults are any files matching `LICENCE*`, `LICENSE*`,</span>
+    <span style="color:#6272a4"># `README*` and `CHANGELOG*` (case-insensitive).</span>
+    files:
+      - LICENSE.txt
+      - README.md
+      - CHANGELOG.md
+      - docs/*
+      - design/<span style="color:#ff79c6">*.png</span>
+      - templates/<span style="color:#ff79c6">**/*</span>
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.</p>
+</blockquote>
+<p>You can add entire folders, its subfolders and files by using the glob notation,
+for example: <code>myfolder/**/*</code>.</p>
+<h2 id="packaging-only-the-binaries">Packaging only the binaries</h2>
+<p>Since GoReleaser will always add the <code>README</code> and <code>LICENSE</code> files to the
+archive if the file list is empty, you'll need to provide a filled <code>files</code>
+on the archive section.</p>
+<p>A working hack is to use something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># goreleaser.yml</span>
+archives:
+- files:
+  - none*
+</code></pre></div><p>This would add all files matching the glob <code>none*</code>, provide that you don't
+have any files matching that glob, only the binary will be added to the
+archive.</p>
+<p>For more information, check <a href="https://github.com/goreleaser/goreleaser/issues/602">#602</a></p>
+<h2 id="a-note-about-gzip">A note about Gzip</h2>
+<p>Gzip is a compression-only format, therefore, it couldn't have more than one
+file inside.</p>
+<p>Presumably, you'll want that file to be the binary, so, your archive section
+will probably look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># goreleaser.yml</span>
+archives:
+- format: gz
+  files:
+  - none*
+</code></pre></div><p>This should create <code>.gz</code> files with the binaries only, which should be
+extracted with something like <code>gzip -d file.gz</code>.</p>
+<p>Multiple builds will also not work in this case and will be handled on
+<a href="https://github.com/goreleaser/goreleaser/issues/705">#705</a>.</p>
+
+
+		<blockquote>
+			<p>Last updated by Carlos Alexandro Becker on October 20, 2019.
+				<a href="https://github.com/goreleaser/goreleaser/edit/master/www/content/archive.md">Improve this page</a>.
+			</p>
+		</blockquote>
+	</div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

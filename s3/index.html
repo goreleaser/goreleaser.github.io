@@ -1,0 +1,293 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>S3 &middot; GoReleaser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="GoReleaser">
+		<meta name="description" content="Deliver Go binaries as fast and easily as possible">
+		<meta http-equiv="content-language" content="en-us" />
+		<meta name="generator" content="Hugo 0.62.0" />
+		<link rel="icon" href="favicon.ico">
+		<meta name="theme-color" content="#000">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="black">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@goreleaser">
+		<meta name="twitter:creator" content="@goreleaser">
+		<meta name="twitter:title" content="GoReleaser">
+		<meta name="twitter:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="twitter:image" content="https://goreleaser.com/card.png">
+		<meta name="og:title" content="GoReleaser">
+		<meta name="og:description" content="Deliver Go binaries as fast and easily as possible">
+		<meta name="og:url" content="https://goreleaser.com/">
+		<meta name="og:image" content="https://goreleaser.com/card.png">
+		<meta property="og:type" content="website" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="https://goreleaser.com/css/index.css">
+		<link rel="apple-touch-icon" href="https://goreleaser.com/apple-touch-icon.png">
+		<link rel="shortcut icon" href="https://goreleaser.com/favicon.ico" type="image/x-icon">
+	</head>
+
+	<body>
+		<div class="Wrapper">
+			<div class="Container">
+				<div class="Header">
+  <a href="https://goreleaser.com/">
+	<div class="Title center">
+		
+			<img alt="GoReleaser Logo" src="https://github.com/goreleaser.png" height="140" />
+		
+		<span class="text">GoReleaser</span>
+		<span class="subtext"></span>
+	</div>
+  </a>
+</div>
+
+				<div class="Content-wrapper">
+					<div class="Sidebar">
+	<div class="Menu">
+		<div class="item">
+			<a href="https://goreleaser.com/">Home</a>
+		</div>
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/introduction/">Introduction</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/install/">Install</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/quick-start/">Quick Start</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/semver/">Semantic Versioning</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/cgo/">CGO</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/environment/">Environment</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/customization/">Customization</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/ci/">Continuous Integration</a>
+				</div>
+			
+		
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/actions/">GitHub Actions</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/deprecations/">Deprecation notices</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/sponsors/">Sponsors</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/contributing/">Contributing</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/tutorials/">Tutorials and posts</a>
+				</div>
+			
+		
+			
+				<div class="item">
+					<a href="https://goreleaser.com/links/">Links</a>
+				</div>
+			
+		
+			
+		
+			
+		
+			
+		
+	</div>
+</div>
+
+					<div class="Content">
+						
+	<div class="Page" id="">
+		<h1>S3</h1>
+		<p>Since <a href="https://github.com/goreleaser/goreleaser/releases/tag/v0.74.0">v0.74.0</a>,
+GoReleaser supports pushing artifacts to Amazon S3 and other API-compatible
+object storages (<a href="https://www.minio.io">minio</a> for example).</p>
+<p>Right now, the implementation is quite simple and probably won't cover all
+use cases. If you need one of such use cases, please open an issue/pull request.</p>
+<p>Here is what you can customize:</p>
+<h2 id="customization">Customization</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6272a4"># .goreleaser.yml</span>
+s3:
+  <span style="color:#6272a4"># You can have multiple s3 configs</span>
+  <span style="color:#f1fa8c">-
+</span><span style="color:#f1fa8c">   </span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c"># Template for the bucket name(without the s3:// prefix)</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    bucket: my-bucket
+
+    <span style="color:#6272a4"># IDs of the artifacts you want to upload.</span>
+    ids:
+    - foo
+    - bar
+
+    <span style="color:#6272a4"># AWS Region to use.</span>
+    <span style="color:#6272a4"># Defaults is us-east-1</span>
+    region: us-east<span style="color:#bd93f9">-1</span>
+
+    <span style="color:#6272a4"># Template for the path/name inside the bucket.</span>
+    <span style="color:#6272a4"># Default is `{{ .ProjectName }}/{{ .Tag }}`</span>
+    folder: <span style="color:#f1fa8c">&#34;foo/bar/{{.Version}}&#34;</span>
+
+    <span style="color:#6272a4"># Set a custom profile to use for this s3 config. If you have multiple</span>
+    <span style="color:#6272a4"># profiles setup in you ~/.aws config, this shall help defining which</span>
+    <span style="color:#6272a4"># profile to use in which s3 bucket.</span>
+    <span style="color:#6272a4"># Default is empty.</span>
+    profile: my-profile
+
+    <span style="color:#6272a4"># Endpoint allows you to set a custom endpoint, which is useful if you</span>
+    <span style="color:#6272a4"># want to push your artifacts to a minio server for example.</span>
+    <span style="color:#6272a4"># Default is AWS S3 URL.</span>
+    endpoint: <span style="color:#f1fa8c">&#34;http://minio.foo.com&#34;</span>
+
+    <span style="color:#6272a4"># Sets the ACL of the object using the specified canned ACL.</span>
+    <span style="color:#6272a4"># Default is private.</span>
+    acl: public-read
+</code></pre></div><blockquote>
+<p>Learn more about the <a href="/templates">name template engine</a>.
+Learn more about the <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTacl.html">acl</a>.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>GoReleaser will authenticate using the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">same methods defined by aws-cli</a>.
+You can read the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">docs</a> to find out more about it.</p>
+<p>Currently it supports authentication with:</p>
+<ul>
+<li>An <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/credentials/#EnvProvider">EnvProvider</a> which retrieves credentials from the environment
+variables of the running process. Environment credentials never expire.
+Environment variables used:
+<ul>
+<li>Access Key ID:     <code>AWS_ACCESS_KEY_ID</code> or <code>AWS_ACCESS_KEY</code></li>
+<li>Secret Access Key: <code>AWS_SECRET_ACCESS_KEY</code> or <code>AWS_SECRET_KEY</code></li>
+</ul>
+</li>
+<li>A <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/credentials/#SharedCredentialsProvider">SharedCredentialsProvider</a> which retrieves
+credentials from the current user's home directory, and keeps track if those
+credentials are expired. Profile ini file example: <code>$HOME/.aws/credentials</code></li>
+<li>A AssumeRoleTokenProvider with enabled SharedConfigState which uses MFA
+prompting for token code on stdin. Go to <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/session/">session doc</a> for more
+details.</li>
+</ul>
+<p>You can also set different profile names for each S3 config, so you may be able
+to push to buckets in different accounts, for example.</p>
+
+
+		<blockquote>
+			<p>Last updated by Carlos Alexandro Becker on October 20, 2019.
+				<a href="https://github.com/goreleaser/goreleaser/edit/master/www/content/s3.md">Improve this page</a>.
+			</p>
+		</blockquote>
+	</div>
+
+						<div class="Footer">
+	<p>Made with ❤️ by GoReleaser contributors.</p>
+</div>
+<script src="https://goreleaser.com/js/index.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106198408-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+					</div>
+				</div>
+		</div>
+	</body>
+</html>
